@@ -1,0 +1,280 @@
+% terraform  init
+Initializing the backend...
+
+Initializing modules...
+
+Initializing provider plugins...
+- Reusing previous version of magodo/restful from the dependency lock file
+- Reusing previous version of vmware/vsphere from the dependency lock file
+- Using previously-installed magodo/restful v0.25.2
+- Using previously-installed vmware/vsphere v2.17.1
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+
+% terraform  validate
+Success! The configuration is valid.
+
+
+% terraform  plan
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 3s
+module.vsphere_namespace.data.restful_resource.supervisors: Reading...
+module.vsphere_namespace.data.restful_resource.supervisors: Read complete after 1s [id=/api/vcenter/namespace-management/supervisors/summaries]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 0s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 0s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.vsphere_namespace.namespace will be created
+  + resource "vsphere_namespace" "namespace" {
+      + id               = (known after apply)
+      + name             = "qa-namespace"
+      + storage_policies = [
+          + "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+        ]
+      + supervisor       = "23ca18ed-f62b-4d78-9724-e4811916c6bf"
+
+      + vm_service {
+          + content_libraries = [
+              + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ]
+          + vm_classes        = [
+              + "best-effort-large",
+              + "best-effort-medium",
+              + "best-effort-small",
+              + "best-effort-xlarge",
+            ]
+        }
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + namespace_id       = (known after apply)
+  + namespace_name     = "qa-namespace"
+  + storage_policy_ids = [
+      + "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+    ]
+  + supervisor_id      = "23ca18ed-f62b-4d78-9724-e4811916c6bf"
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+
+
+% terraform apply
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 1s
+module.vsphere_namespace.data.restful_resource.supervisors: Reading...
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 0s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.restful_resource.supervisors: Read complete after 0s [id=/api/vcenter/namespace-management/supervisors/summaries]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 0s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.vsphere_namespace.namespace will be created
+  + resource "vsphere_namespace" "namespace" {
+      + id               = (known after apply)
+      + name             = "qa-namespace"
+      + storage_policies = [
+          + "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+        ]
+      + supervisor       = "23ca18ed-f62b-4d78-9724-e4811916c6bf"
+
+      + vm_service {
+          + content_libraries = [
+              + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ]
+          + vm_classes        = [
+              + "best-effort-large",
+              + "best-effort-medium",
+              + "best-effort-small",
+              + "best-effort-xlarge",
+            ]
+        }
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + namespace_id       = (known after apply)
+  + namespace_name     = "qa-namespace"
+  + storage_policy_ids = [
+      + "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+    ]
+  + supervisor_id      = "23ca18ed-f62b-4d78-9724-e4811916c6bf"
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.vsphere_namespace.namespace: Creating...
+module.vsphere_namespace.vsphere_namespace.namespace: Still creating... [00m10s elapsed]
+module.vsphere_namespace.vsphere_namespace.namespace: Creation complete after 15s [id=qa-namespace]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+namespace_id = "qa-namespace"
+namespace_name = "qa-namespace"
+storage_policy_ids = tolist([
+  "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+])
+supervisor_id = "23ca18ed-f62b-4d78-9724-e4811916c6bf"
+
+
+% terraform plan -destroy
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.data.restful_resource.supervisors: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 0s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.restful_resource.supervisors: Read complete after 0s [id=/api/vcenter/namespace-management/supervisors/summaries]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 1s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+module.vsphere_namespace.vsphere_namespace.namespace: Refreshing state... [id=qa-namespace]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.vsphere_namespace.namespace will be destroyed
+  - resource "vsphere_namespace" "namespace" {
+      - id               = "qa-namespace" -> null
+      - name             = "qa-namespace" -> null
+      - storage_policies = [
+          - "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+        ] -> null
+      - supervisor       = "23ca18ed-f62b-4d78-9724-e4811916c6bf" -> null
+
+      - vm_service {
+          - content_libraries = [
+              - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ] -> null
+          - vm_classes        = [
+              - "best-effort-medium",
+              - "best-effort-small",
+              - "best-effort-xlarge",
+              - "best-effort-large",
+            ] -> null
+        }
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+  - namespace_id       = "qa-namespace" -> null
+  - namespace_name     = "qa-namespace" -> null
+  - storage_policy_ids = [
+      - "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+    ] -> null
+  - supervisor_id      = "23ca18ed-f62b-4d78-9724-e4811916c6bf" -> null
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+
+
+% tterraform  destroy
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.data.restful_resource.supervisors: Reading...
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 0s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.restful_resource.supervisors: Read complete after 0s [id=/api/vcenter/namespace-management/supervisors/summaries]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 1s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+module.vsphere_namespace.vsphere_namespace.namespace: Refreshing state... [id=qa-namespace]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.vsphere_namespace.namespace will be destroyed
+  - resource "vsphere_namespace" "namespace" {
+      - id               = "qa-namespace" -> null
+      - name             = "qa-namespace" -> null
+      - storage_policies = [
+          - "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+        ] -> null
+      - supervisor       = "23ca18ed-f62b-4d78-9724-e4811916c6bf" -> null
+
+      - vm_service {
+          - content_libraries = [
+              - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ] -> null
+          - vm_classes        = [
+              - "best-effort-medium",
+              - "best-effort-small",
+              - "best-effort-xlarge",
+              - "best-effort-large",
+            ] -> null
+        }
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+  - namespace_id       = "qa-namespace" -> null
+  - namespace_name     = "qa-namespace" -> null
+  - storage_policy_ids = [
+      - "aa6d5a82-1c88-45da-85d3-3d74b91a5bad",
+    ] -> null
+  - supervisor_id      = "23ca18ed-f62b-4d78-9724-e4811916c6bf" -> null
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+module.vsphere_namespace.vsphere_namespace.namespace: Destroying... [id=qa-namespace]
+module.vsphere_namespace.vsphere_namespace.namespace: Destruction complete after 0s
+
+Destroy complete! Resources: 1 destroyed.
+
+

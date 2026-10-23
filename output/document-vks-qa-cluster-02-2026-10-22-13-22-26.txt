@@ -1,0 +1,1065 @@
+VKS QA-CLUSTER-02 REPORT
+Script             : 18-document-vks-qa-cluster-02.sh
+Generated          : 2026-10-22 13:22:26 GMT
+Context            : qa-cluster-02:qa-cluster-02
+API server         : https://192.168.197.49:6443
+Mode               : Read-only discovery
+TLS verification   : Enabled (kubeconfig)
+Namespace          : All namespaces
+<none> means no value was returned. READ FAILED means the lookup failed.
+All sections show live API data. Service tables include all services.
+
+-------------------------------------------------------------------------------------------
+| 1. NETWORK CIDR AND IP SUMMARY - qa-cluster-02:qa-cluster-02                            |
+-------------------------------------------------------------------------------------------
+NETWORK              CIDRs / IPs
+Node IPs             192.168.196.34,192.168.196.36,192.168.196.37,192.168.196.61,192.168.196.62,192.168.196.63
+Pod CIDRs            10.95.0.0/24,10.95.1.0/24,10.95.2.0/24,10.95.3.0/24,10.95.4.0/24,10.95.5.0/24
+Service CIDRs        10.96.0.0/12
+Load balancer IPs    <none>
+Ingress IPs          <none>
+
+Pod CIDRs are the ranges allocated to nodes; the full cluster pod range may be larger.
+
+-------------------------------------------------------------------------------------------
+| 2. NODE ADDRESSES - qa-cluster-02:qa-cluster-02                                         |
+-------------------------------------------------------------------------------------------
+NODE                                                 INTERNAL-IP      EXTERNAL-IP   HOSTNAME
+qa-cluster-02-ch6v4-gfvxh                            192.168.196.36   <none>        
+qa-cluster-02-ch6v4-s7s92                            192.168.196.61   <none>        
+qa-cluster-02-ch6v4-wd4kk                            192.168.196.37   <none>        
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   192.168.196.63   <none>        
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   192.168.196.34   <none>        
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   192.168.196.62   <none>        
+
+-------------------------------------------------------------------------------------------
+| 3. NODE POD CIDRs - qa-cluster-02:qa-cluster-02                                         |
+-------------------------------------------------------------------------------------------
+NODE                                                 POD-CIDR       POD-CIDRS
+qa-cluster-02-ch6v4-gfvxh                            10.95.4.0/24   10.95.4.0/24
+qa-cluster-02-ch6v4-s7s92                            10.95.0.0/24   10.95.0.0/24
+qa-cluster-02-ch6v4-wd4kk                            10.95.5.0/24   10.95.5.0/24
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   10.95.1.0/24   10.95.1.0/24
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   10.95.3.0/24   10.95.3.0/24
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   10.95.2.0/24   10.95.2.0/24
+
+-------------------------------------------------------------------------------------------
+| 4. CLUSTER SERVICE CIDRs - qa-cluster-02:qa-cluster-02                                  |
+-------------------------------------------------------------------------------------------
+NAME         SERVICE-CIDRS
+kubernetes   10.96.0.0/12
+
+-------------------------------------------------------------------------------------------
+| 5. POD ADDRESSES - qa-cluster-02:qa-cluster-02                                          |
+-------------------------------------------------------------------------------------------
+NAMESPACE                      POD                                                 PHASE     POD-IP           POD-IPS          NODE
+kube-system                    antrea-agent-29blv                                  Running   192.168.196.37   192.168.196.37   qa-cluster-02-ch6v4-wd4kk
+kube-system                    antrea-agent-2ntcf                                  Running   192.168.196.36   192.168.196.36   qa-cluster-02-ch6v4-gfvxh
+kube-system                    antrea-agent-7fqgb                                  Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+kube-system                    antrea-agent-f297l                                  Running   192.168.196.62   192.168.196.62   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn
+kube-system                    antrea-agent-n4fvt                                  Running   192.168.196.63   192.168.196.63   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h
+kube-system                    antrea-agent-v88m4                                  Running   192.168.196.34   192.168.196.34   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm
+kube-system                    antrea-controller-554bb8c745-swlhg                  Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+kube-system                    coredns-74754687d6-xfbvf                            Running   10.95.0.10       10.95.0.10       qa-cluster-02-ch6v4-s7s92
+kube-system                    coredns-74754687d6-xplds                            Running   10.95.0.5        10.95.0.5        qa-cluster-02-ch6v4-s7s92
+kube-system                    etcd-qa-cluster-02-ch6v4-gfvxh                      Running   192.168.196.36   192.168.196.36   qa-cluster-02-ch6v4-gfvxh
+kube-system                    etcd-qa-cluster-02-ch6v4-s7s92                      Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+kube-system                    etcd-qa-cluster-02-ch6v4-wd4kk                      Running   192.168.196.37   192.168.196.37   qa-cluster-02-ch6v4-wd4kk
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-gfvxh            Running   192.168.196.36   192.168.196.36   qa-cluster-02-ch6v4-gfvxh
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-s7s92            Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-wd4kk            Running   192.168.196.37   192.168.196.37   qa-cluster-02-ch6v4-wd4kk
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-gfvxh   Running   192.168.196.36   192.168.196.36   qa-cluster-02-ch6v4-gfvxh
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-s7s92   Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-wd4kk   Running   192.168.196.37   192.168.196.37   qa-cluster-02-ch6v4-wd4kk
+kube-system                    kube-proxy-6dsqt                                    Running   192.168.196.34   192.168.196.34   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm
+kube-system                    kube-proxy-9rxj4                                    Running   192.168.196.36   192.168.196.36   qa-cluster-02-ch6v4-gfvxh
+kube-system                    kube-proxy-d8c75                                    Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+kube-system                    kube-proxy-g89wq                                    Running   192.168.196.37   192.168.196.37   qa-cluster-02-ch6v4-wd4kk
+kube-system                    kube-proxy-hxbpp                                    Running   192.168.196.62   192.168.196.62   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn
+kube-system                    kube-proxy-nrtbk                                    Running   192.168.196.63   192.168.196.63   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-gfvxh            Running   192.168.196.36   192.168.196.36   qa-cluster-02-ch6v4-gfvxh
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-s7s92            Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-wd4kk            Running   192.168.196.37   192.168.196.37   qa-cluster-02-ch6v4-wd4kk
+kube-system                    metrics-server-9497f774-5bqb5                       Running   10.95.0.9        10.95.0.9        qa-cluster-02-ch6v4-s7s92
+kube-system                    snapshot-controller-866d4b7bdd-9m7xb                Running   10.95.0.8        10.95.0.8        qa-cluster-02-ch6v4-s7s92
+secretgen-controller           secretgen-controller-6b45cf44c6-kstj5               Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+tkg-system                     kapp-controller-5cbf5b8969-jk76t                    Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+vmware-system-auth             guest-cluster-auth-svc-bkz2z                        Running   192.168.196.37   192.168.196.37   qa-cluster-02-ch6v4-wd4kk
+vmware-system-auth             guest-cluster-auth-svc-c52r4                        Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+vmware-system-auth             guest-cluster-auth-svc-jz97h                        Running   192.168.196.36   192.168.196.36   qa-cluster-02-ch6v4-gfvxh
+vmware-system-cloud-provider   guest-cluster-cloud-provider-ccdc7fd86-dpctl        Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+vmware-system-csi              vsphere-csi-controller-85998dcf6b-5hclj             Running   10.95.0.2        10.95.0.2        qa-cluster-02-ch6v4-s7s92
+vmware-system-csi              vsphere-csi-node-4cz4j                              Running   192.168.196.34   192.168.196.34   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm
+vmware-system-csi              vsphere-csi-node-6kpxq                              Running   192.168.196.62   192.168.196.62   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn
+vmware-system-csi              vsphere-csi-node-tnwj7                              Running   192.168.196.37   192.168.196.37   qa-cluster-02-ch6v4-wd4kk
+vmware-system-csi              vsphere-csi-node-tzf24                              Running   192.168.196.36   192.168.196.36   qa-cluster-02-ch6v4-gfvxh
+vmware-system-csi              vsphere-csi-node-w4p9h                              Running   192.168.196.63   192.168.196.63   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h
+vmware-system-csi              vsphere-csi-node-wpwfx                              Running   192.168.196.61   192.168.196.61   qa-cluster-02-ch6v4-s7s92
+vmware-system-helm             helm-controller-77d9f5975f-2vt6l                    Running   10.95.0.3        10.95.0.3        qa-cluster-02-ch6v4-s7s92
+vmware-system-helm             source-controller-7dd755d7b9-7rcm4                  Running   10.95.0.4        10.95.0.4        qa-cluster-02-ch6v4-s7s92
+
+-------------------------------------------------------------------------------------------
+| 6. SERVICE CLUSTER ADDRESSES - qa-cluster-02:qa-cluster-02                              |
+-------------------------------------------------------------------------------------------
+NAMESPACE            SERVICE                  TYPE        CLUSTER-IPS     PORTS        PROTOCOLS
+default              kubernetes               ClusterIP   10.96.0.1       443          TCP
+default              supervisor               ClusterIP   None            6443         TCP
+kube-system          antrea                   ClusterIP   10.104.9.91     443          TCP
+kube-system          kube-dns                 ClusterIP   10.96.0.10      53,53,9153   UDP,TCP,TCP
+kube-system          metrics-server           ClusterIP   10.96.159.27    443          TCP
+tkg-system           packaging-api            ClusterIP   10.110.16.253   443,8080     TCP,TCP
+vmware-system-csi    vsphere-csi-controller   ClusterIP   10.104.99.39    2112,2113    TCP,TCP
+vmware-system-helm   source-controller        ClusterIP   10.100.23.65    80           TCP
+
+-------------------------------------------------------------------------------------------
+| 7. SERVICE LOAD BALANCER ADDRESSES - qa-cluster-02:qa-cluster-02                        |
+-------------------------------------------------------------------------------------------
+NAMESPACE            SERVICE                  TYPE        LB-IPS   LB-HOSTNAMES
+default              kubernetes               ClusterIP   <none>   <none>
+default              supervisor               ClusterIP   <none>   <none>
+kube-system          antrea                   ClusterIP   <none>   <none>
+kube-system          kube-dns                 ClusterIP   <none>   <none>
+kube-system          metrics-server           ClusterIP   <none>   <none>
+tkg-system           packaging-api            ClusterIP   <none>   <none>
+vmware-system-csi    vsphere-csi-controller   ClusterIP   <none>   <none>
+vmware-system-helm   source-controller        ClusterIP   <none>   <none>
+A LoadBalancer service with no LB address has no assigned address reported yet.
+
+-------------------------------------------------------------------------------------------
+| 8. SERVICE EXTERNAL ADDRESSES - qa-cluster-02:qa-cluster-02                             |
+-------------------------------------------------------------------------------------------
+NAMESPACE            SERVICE                  TYPE        EXTERNAL-IPS   EXTERNAL-NAME
+default              kubernetes               ClusterIP   <none>         <none>
+default              supervisor               ClusterIP   <none>         <none>
+kube-system          antrea                   ClusterIP   <none>         <none>
+kube-system          kube-dns                 ClusterIP   <none>         <none>
+kube-system          metrics-server           ClusterIP   <none>         <none>
+tkg-system           packaging-api            ClusterIP   <none>         <none>
+vmware-system-csi    vsphere-csi-controller   ClusterIP   <none>         <none>
+vmware-system-helm   source-controller        ClusterIP   <none>         <none>
+
+-------------------------------------------------------------------------------------------
+| 9. ENDPOINT SLICE ADDRESSES - qa-cluster-02:qa-cluster-02                               |
+-------------------------------------------------------------------------------------------
+NAMESPACE            SERVICE                  SLICE                          ADDRESS-TYPE   ALL-ADDRESSES                                  READY-ADDRESSES                                NOT-READY-ADDRESSES   PORTS
+default              kubernetes               kubernetes                     IPv4           192.168.196.36,192.168.196.37,192.168.196.61   192.168.196.36,192.168.196.37,192.168.196.61   <none>                6443
+default              supervisor               supervisor-ckpqz               IPv4           192.168.197.31                                 192.168.197.31                                 <none>                6443
+kube-system          antrea                   antrea-xhp78                   IPv4           192.168.196.61                                 192.168.196.61                                 <none>                10349
+kube-system          kube-dns                 kube-dns-x9ldw                 IPv4           10.95.0.5,10.95.0.10                           10.95.0.5,10.95.0.10                           <none>                53,53,9153
+kube-system          metrics-server           metrics-server-mxx2q           IPv4           10.95.0.9                                      10.95.0.9                                      <none>                4443
+tkg-system           packaging-api            packaging-api-nt6l8            IPv4           192.168.196.61                                 192.168.196.61                                 <none>                8080,10100
+vmware-system-csi    vsphere-csi-controller   vsphere-csi-controller-6f985   IPv4           10.95.0.2                                      10.95.0.2                                      <none>                2112,2113
+vmware-system-helm   source-controller        source-controller-vm2l4        IPv4           10.95.0.4                                      10.95.0.4                                      <none>                9090
+Endpoints with unspecified readiness appear only in ALL-ADDRESSES.
+
+-------------------------------------------------------------------------------------------
+| 10. INGRESS ADDRESSES - qa-cluster-02:qa-cluster-02                                     |
+-------------------------------------------------------------------------------------------
+NAMESPACE   INGRESS   CLASS   HOSTS   IPS   HOSTNAMES
+
+-------------------------------------------------------------------------------------------
+| 11. SERVICE NODE PORTS - qa-cluster-02:qa-cluster-02                                    |
+-------------------------------------------------------------------------------------------
+NAMESPACE            SERVICE                  TYPE        PORTS        NODEPORTS   PROTOCOLS
+default              kubernetes               ClusterIP   443          <none>      TCP
+default              supervisor               ClusterIP   6443         <none>      TCP
+kube-system          antrea                   ClusterIP   443          <none>      TCP
+kube-system          kube-dns                 ClusterIP   53,53,9153   <none>      UDP,TCP,TCP
+kube-system          metrics-server           ClusterIP   443          <none>      TCP
+tkg-system           packaging-api            ClusterIP   443,8080     <none>      TCP,TCP
+vmware-system-csi    vsphere-csi-controller   ClusterIP   2112,2113    <none>      TCP,TCP
+vmware-system-helm   source-controller        ClusterIP   80           <none>      TCP
+
+-------------------------------------------------------------------------------------------
+| 12. CLUSTER IDENTITY - qa-cluster-02:qa-cluster-02                                      |
+-------------------------------------------------------------------------------------------
+API endpoint: https://192.168.197.49:6443
+Warning: version difference between client (1.37) and server (1.35) exceeds the supported minor version skew of +/-1
+Kubernetes server: v1.35.6+vmware.2
+Node count: 6
+Namespace count: 14
+
+-------------------------------------------------------------------------------------------
+| 13. NODE CONFIGURATION AND CONDITIONS - qa-cluster-02:qa-cluster-02                     |
+-------------------------------------------------------------------------------------------
+NAME                                                 STATUS   ROLES           AGE   VERSION            INTERNAL-IP      EXTERNAL-IP   OS-IMAGE                 KERNEL-VERSION   CONTAINER-RUNTIME
+qa-cluster-02-ch6v4-gfvxh                            Ready    control-plane   56m   v1.35.6+vmware.2   192.168.196.36   <none>        VMware Photon OS/Linux   6.1.176-4.ph5    containerd://2.2.5+vmware.3-fips
+qa-cluster-02-ch6v4-s7s92                            Ready    control-plane   59m   v1.35.6+vmware.2   192.168.196.61   <none>        VMware Photon OS/Linux   6.1.176-4.ph5    containerd://2.2.5+vmware.3-fips
+qa-cluster-02-ch6v4-wd4kk                            Ready    control-plane   52m   v1.35.6+vmware.2   192.168.196.37   <none>        VMware Photon OS/Linux   6.1.176-4.ph5    containerd://2.2.5+vmware.3-fips
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   Ready    <none>          58m   v1.35.6+vmware.2   192.168.196.63   <none>        VMware Photon OS/Linux   6.1.176-4.ph5    containerd://2.2.5+vmware.3-fips
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   Ready    <none>          57m   v1.35.6+vmware.2   192.168.196.34   <none>        VMware Photon OS/Linux   6.1.176-4.ph5    containerd://2.2.5+vmware.3-fips
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   Ready    <none>          58m   v1.35.6+vmware.2   192.168.196.62   <none>        VMware Photon OS/Linux   6.1.176-4.ph5    containerd://2.2.5+vmware.3-fips
+
+Node: qa-cluster-02-ch6v4-gfvxh
+OS: VMware Photon OS/Linux
+Kernel: 6.1.176-4.ph5
+Runtime: containerd://2.2.5+vmware.3-fips
+Unschedulable: false
+Zone: lab-zone-01
+Region: <none>
+Taint: node-role.kubernetes.io/control-plane=: NoSchedule
+Condition: MemoryPressure=False; reason=KubeletHasSufficientMemory; transition=2026-10-22T12:26:02Z; message=kubelet has sufficient memory available
+Condition: DiskPressure=False; reason=KubeletHasNoDiskPressure; transition=2026-10-22T12:26:02Z; message=kubelet has no disk pressure
+Condition: PIDPressure=False; reason=KubeletHasSufficientPID; transition=2026-10-22T12:26:02Z; message=kubelet has sufficient PID available
+Condition: Ready=True; reason=KubeletReady; transition=2026-10-22T12:27:03Z; message=kubelet is posting ready status
+
+Node: qa-cluster-02-ch6v4-s7s92
+OS: VMware Photon OS/Linux
+Kernel: 6.1.176-4.ph5
+Runtime: containerd://2.2.5+vmware.3-fips
+Unschedulable: false
+Zone: lab-zone-01
+Region: <none>
+Taint: node-role.kubernetes.io/control-plane=: NoSchedule
+Condition: MemoryPressure=False; reason=KubeletHasSufficientMemory; transition=2026-10-22T12:22:52Z; message=kubelet has sufficient memory available
+Condition: DiskPressure=False; reason=KubeletHasNoDiskPressure; transition=2026-10-22T12:22:52Z; message=kubelet has no disk pressure
+Condition: PIDPressure=False; reason=KubeletHasSufficientPID; transition=2026-10-22T12:22:52Z; message=kubelet has sufficient PID available
+Condition: Ready=True; reason=KubeletReady; transition=2026-10-22T12:24:17Z; message=kubelet is posting ready status
+
+Node: qa-cluster-02-ch6v4-wd4kk
+OS: VMware Photon OS/Linux
+Kernel: 6.1.176-4.ph5
+Runtime: containerd://2.2.5+vmware.3-fips
+Unschedulable: false
+Zone: lab-zone-01
+Region: <none>
+Taint: node-role.kubernetes.io/control-plane=: NoSchedule
+Condition: MemoryPressure=False; reason=KubeletHasSufficientMemory; transition=2026-10-22T12:29:51Z; message=kubelet has sufficient memory available
+Condition: DiskPressure=False; reason=KubeletHasNoDiskPressure; transition=2026-10-22T12:29:51Z; message=kubelet has no disk pressure
+Condition: PIDPressure=False; reason=KubeletHasSufficientPID; transition=2026-10-22T12:29:51Z; message=kubelet has sufficient PID available
+Condition: Ready=True; reason=KubeletReady; transition=2026-10-22T12:29:59Z; message=kubelet is posting ready status
+
+Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h
+OS: VMware Photon OS/Linux
+Kernel: 6.1.176-4.ph5
+Runtime: containerd://2.2.5+vmware.3-fips
+Unschedulable: false
+Zone: lab-zone-01
+Region: <none>
+Condition: MemoryPressure=False; reason=KubeletHasSufficientMemory; transition=2026-10-22T12:24:03Z; message=kubelet has sufficient memory available
+Condition: DiskPressure=False; reason=KubeletHasNoDiskPressure; transition=2026-10-22T12:24:03Z; message=kubelet has no disk pressure
+Condition: PIDPressure=False; reason=KubeletHasSufficientPID; transition=2026-10-22T12:24:03Z; message=kubelet has sufficient PID available
+Condition: Ready=True; reason=KubeletReady; transition=2026-10-22T12:25:29Z; message=kubelet is posting ready status
+
+Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm
+OS: VMware Photon OS/Linux
+Kernel: 6.1.176-4.ph5
+Runtime: containerd://2.2.5+vmware.3-fips
+Unschedulable: false
+Zone: lab-zone-01
+Region: <none>
+Condition: MemoryPressure=False; reason=KubeletHasSufficientMemory; transition=2026-10-22T12:25:04Z; message=kubelet has sufficient memory available
+Condition: DiskPressure=False; reason=KubeletHasNoDiskPressure; transition=2026-10-22T12:25:04Z; message=kubelet has no disk pressure
+Condition: PIDPressure=False; reason=KubeletHasSufficientPID; transition=2026-10-22T12:25:04Z; message=kubelet has sufficient PID available
+Condition: Ready=True; reason=KubeletReady; transition=2026-10-22T12:26:32Z; message=kubelet is posting ready status
+
+Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn
+OS: VMware Photon OS/Linux
+Kernel: 6.1.176-4.ph5
+Runtime: containerd://2.2.5+vmware.3-fips
+Unschedulable: false
+Zone: lab-zone-01
+Region: <none>
+Condition: MemoryPressure=False; reason=KubeletHasSufficientMemory; transition=2026-10-22T12:24:07Z; message=kubelet has sufficient memory available
+Condition: DiskPressure=False; reason=KubeletHasNoDiskPressure; transition=2026-10-22T12:24:07Z; message=kubelet has no disk pressure
+Condition: PIDPressure=False; reason=KubeletHasSufficientPID; transition=2026-10-22T12:24:07Z; message=kubelet has sufficient PID available
+Condition: Ready=True; reason=KubeletReady; transition=2026-10-22T12:25:06Z; message=kubelet is posting ready status
+
+-------------------------------------------------------------------------------------------
+| 14. NODE RESOURCE CAPACITY - qa-cluster-02:qa-cluster-02                                |
+-------------------------------------------------------------------------------------------
+NODE                                                 CPU-CAPACITY   CPU-ALLOCATABLE   MEMORY-CAPACITY   MEMORY-ALLOCATABLE   PODS-CAPACITY   PODS-ALLOCATABLE   EPHEMERAL-ALLOCATABLE
+qa-cluster-02-ch6v4-gfvxh                            2              1930m             8126952Ki         6189544Ki            110             110                18645025966
+qa-cluster-02-ch6v4-s7s92                            2              1930m             8126952Ki         6189544Ki            110             110                18645025966
+qa-cluster-02-ch6v4-wd4kk                            2              1930m             8126948Ki         6189540Ki            110             110                18645025966
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   2              1930m             8126952Ki         6189544Ki            110             110                18645025966
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   2              1930m             8126952Ki         6189544Ki            110             110                18645025966
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   2              1930m             8126952Ki         6189544Ki            110             110                18645025966
+
+-------------------------------------------------------------------------------------------
+| 15. WORKLOAD INVENTORY - qa-cluster-02:qa-cluster-02                                    |
+-------------------------------------------------------------------------------------------
+NAMESPACE                      NAME                                           READY   UP-TO-DATE   AVAILABLE   AGE
+kube-system                    deployment.apps/antrea-controller              1/1     1            1           58m
+kube-system                    deployment.apps/coredns                        2/2     2            2           59m
+kube-system                    deployment.apps/metrics-server                 1/1     1            1           59m
+kube-system                    deployment.apps/snapshot-controller            1/1     1            1           59m
+secretgen-controller           deployment.apps/secretgen-controller           1/1     1            1           58m
+tkg-system                     deployment.apps/kapp-controller                1/1     1            1           59m
+vmware-system-cloud-provider   deployment.apps/guest-cluster-cloud-provider   1/1     1            1           59m
+vmware-system-csi              deployment.apps/vsphere-csi-controller         1/1     1            1           59m
+vmware-system-helm             deployment.apps/helm-controller                1/1     1            1           58m
+vmware-system-helm             deployment.apps/source-controller              1/1     1            1           58m
+
+NAMESPACE            NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-system          daemonset.apps/antrea-agent             6         6         6       6            6           kubernetes.io/os=linux   58m
+kube-system          daemonset.apps/kube-proxy               6         6         6       6            6           kubernetes.io/os=linux   59m
+vmware-system-auth   daemonset.apps/guest-cluster-auth-svc   3         3         3       3            3           <none>                   59m
+vmware-system-csi    daemonset.apps/vsphere-csi-node         6         6         6       6            6           kubernetes.io/os=linux   59m
+
+-------------------------------------------------------------------------------------------
+| 16. POD STATUS - qa-cluster-02:qa-cluster-02                                            |
+-------------------------------------------------------------------------------------------
+NAMESPACE                      NAME                                                READY   STATUS    RESTARTS      AGE   IP               NODE                                                 NOMINATED NODE   READINESS GATES
+kube-system                    antrea-agent-29blv                                  2/2     Running   0             52m   192.168.196.37   qa-cluster-02-ch6v4-wd4kk                            <none>           <none>
+kube-system                    antrea-agent-2ntcf                                  2/2     Running   0             56m   192.168.196.36   qa-cluster-02-ch6v4-gfvxh                            <none>           <none>
+kube-system                    antrea-agent-7fqgb                                  2/2     Running   0             58m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    antrea-agent-f297l                                  2/2     Running   0             58m   192.168.196.62   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   <none>           <none>
+kube-system                    antrea-agent-n4fvt                                  2/2     Running   0             58m   192.168.196.63   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   <none>           <none>
+kube-system                    antrea-agent-v88m4                                  2/2     Running   0             57m   192.168.196.34   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   <none>           <none>
+kube-system                    antrea-controller-554bb8c745-swlhg                  1/1     Running   0             58m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    coredns-74754687d6-xfbvf                            1/1     Running   0             57m   10.95.0.10       qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    coredns-74754687d6-xplds                            1/1     Running   0             59m   10.95.0.5        qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    etcd-qa-cluster-02-ch6v4-gfvxh                      1/1     Running   0             56m   192.168.196.36   qa-cluster-02-ch6v4-gfvxh                            <none>           <none>
+kube-system                    etcd-qa-cluster-02-ch6v4-s7s92                      1/1     Running   0             59m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    etcd-qa-cluster-02-ch6v4-wd4kk                      1/1     Running   0             52m   192.168.196.37   qa-cluster-02-ch6v4-wd4kk                            <none>           <none>
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-gfvxh            1/1     Running   0             56m   192.168.196.36   qa-cluster-02-ch6v4-gfvxh                            <none>           <none>
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-s7s92            1/1     Running   0             59m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-wd4kk            1/1     Running   0             52m   192.168.196.37   qa-cluster-02-ch6v4-wd4kk                            <none>           <none>
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-gfvxh   1/1     Running   1 (55m ago)   56m   192.168.196.36   qa-cluster-02-ch6v4-gfvxh                            <none>           <none>
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-s7s92   1/1     Running   1 (57m ago)   59m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-wd4kk   1/1     Running   0             52m   192.168.196.37   qa-cluster-02-ch6v4-wd4kk                            <none>           <none>
+kube-system                    kube-proxy-6dsqt                                    1/1     Running   0             57m   192.168.196.34   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   <none>           <none>
+kube-system                    kube-proxy-9rxj4                                    1/1     Running   0             56m   192.168.196.36   qa-cluster-02-ch6v4-gfvxh                            <none>           <none>
+kube-system                    kube-proxy-d8c75                                    1/1     Running   0             59m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    kube-proxy-g89wq                                    1/1     Running   0             52m   192.168.196.37   qa-cluster-02-ch6v4-wd4kk                            <none>           <none>
+kube-system                    kube-proxy-hxbpp                                    1/1     Running   0             58m   192.168.196.62   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   <none>           <none>
+kube-system                    kube-proxy-nrtbk                                    1/1     Running   0             58m   192.168.196.63   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   <none>           <none>
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-gfvxh            1/1     Running   1 (55m ago)   56m   192.168.196.36   qa-cluster-02-ch6v4-gfvxh                            <none>           <none>
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-s7s92            1/1     Running   1 (57m ago)   59m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-wd4kk            1/1     Running   0             52m   192.168.196.37   qa-cluster-02-ch6v4-wd4kk                            <none>           <none>
+kube-system                    metrics-server-9497f774-5bqb5                       1/1     Running   0             59m   10.95.0.9        qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+kube-system                    snapshot-controller-866d4b7bdd-9m7xb                1/1     Running   0             59m   10.95.0.8        qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+secretgen-controller           secretgen-controller-6b45cf44c6-kstj5               1/1     Running   0             58m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+tkg-system                     kapp-controller-5cbf5b8969-jk76t                    2/2     Running   0             59m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+vmware-system-auth             guest-cluster-auth-svc-bkz2z                        1/1     Running   0             52m   192.168.196.37   qa-cluster-02-ch6v4-wd4kk                            <none>           <none>
+vmware-system-auth             guest-cluster-auth-svc-c52r4                        1/1     Running   0             58m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+vmware-system-auth             guest-cluster-auth-svc-jz97h                        1/1     Running   0             53m   192.168.196.36   qa-cluster-02-ch6v4-gfvxh                            <none>           <none>
+vmware-system-cloud-provider   guest-cluster-cloud-provider-ccdc7fd86-dpctl        1/1     Running   2 (55m ago)   59m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+vmware-system-csi              vsphere-csi-controller-85998dcf6b-5hclj             7/7     Running   0             59m   10.95.0.2        qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+vmware-system-csi              vsphere-csi-node-4cz4j                              3/3     Running   2 (55m ago)   57m   192.168.196.34   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   <none>           <none>
+vmware-system-csi              vsphere-csi-node-6kpxq                              3/3     Running   3 (56m ago)   58m   192.168.196.62   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   <none>           <none>
+vmware-system-csi              vsphere-csi-node-tnwj7                              3/3     Running   0             52m   192.168.196.37   qa-cluster-02-ch6v4-wd4kk                            <none>           <none>
+vmware-system-csi              vsphere-csi-node-tzf24                              3/3     Running   1 (55m ago)   56m   192.168.196.36   qa-cluster-02-ch6v4-gfvxh                            <none>           <none>
+vmware-system-csi              vsphere-csi-node-w4p9h                              3/3     Running   4 (56m ago)   58m   192.168.196.63   qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   <none>           <none>
+vmware-system-csi              vsphere-csi-node-wpwfx                              3/3     Running   5 (56m ago)   59m   192.168.196.61   qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+vmware-system-helm             helm-controller-77d9f5975f-2vt6l                    1/1     Running   0             58m   10.95.0.3        qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+vmware-system-helm             source-controller-7dd755d7b9-7rcm4                  1/1     Running   0             58m   10.95.0.4        qa-cluster-02-ch6v4-s7s92                            <none>           <none>
+All listed pods have status Running.
+
+-------------------------------------------------------------------------------------------
+| 17. STORAGE CLASSES AND VOLUMES - qa-cluster-02:qa-cluster-02                           |
+-------------------------------------------------------------------------------------------
+NAME                                      PROVISIONER              RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+vsan-default-storage-policy               csi.vsphere.vmware.com   Delete          Immediate              true                   59m
+vsan-default-storage-policy-latebinding   csi.vsphere.vmware.com   Delete          WaitForFirstConsumer   true                   59m
+
+StorageClass: vsan-default-storage-policy
+Default: false
+Provisioner: csi.vsphere.vmware.com
+Reclaim policy: Delete
+Binding mode: Immediate
+Expansion allowed: true
+Allowed topology: []
+Parameter: svStorageClass=vsan-default-storage-policy
+
+StorageClass: vsan-default-storage-policy-latebinding
+Default: false
+Provisioner: csi.vsphere.vmware.com
+Reclaim policy: Delete
+Binding mode: WaitForFirstConsumer
+Expansion allowed: true
+Allowed topology: []
+Parameter: svStorageClass=vsan-default-storage-policy
+No resources found
+No resources found
+
+-------------------------------------------------------------------------------------------
+| 18. NAMESPACE CONFIGURATION - qa-cluster-02:qa-cluster-02                               |
+-------------------------------------------------------------------------------------------
+NAMESPACE                            STATUS   PSA-ENFORCE   PSA-AUDIT    PSA-WARN
+default                              Active   <none>        <none>       <none>
+flow-aggregator                      Active   privileged    privileged   privileged
+kube-node-lease                      Active   <none>        <none>       <none>
+kube-public                          Active   <none>        <none>       <none>
+kube-system                          Active   <none>        <none>       <none>
+secretgen-controller                 Active   privileged    privileged   privileged
+tkg-system                           Active   <none>        <none>       <none>
+velero-vsphere-plugin-backupdriver   Active   <none>        <none>       <none>
+vmware-system-antrea                 Active   privileged    privileged   privileged
+vmware-system-auth                   Active   privileged    <none>       <none>
+vmware-system-cloud-provider         Active   <none>        <none>       <none>
+vmware-system-csi                    Active   privileged    <none>       <none>
+vmware-system-helm                   Active   <none>        <none>       restricted
+vmware-system-tkg                    Active   <none>        <none>       <none>
+Quota: flow-aggregator/flow-aggregator-quotas
+Hard: null
+Used: {}
+Scopes: []
+Quota: kube-system/system-priorityclass-resourcequota
+Hard: null
+Used: {}
+Scopes: []
+Quota: secretgen-controller/system-priorityclass-resourcequota
+Hard: null
+Used: {}
+Scopes: []
+Quota: tkg-system/system-priorityclass-resourcequota
+Hard: null
+Used: {}
+Scopes: []
+Quota: vmware-system-antrea/antrea-interworking-quotas
+Hard: null
+Used: {}
+Scopes: []
+Quota: vmware-system-auth/system-priorityclass-resourcequota
+Hard: null
+Used: {}
+Scopes: []
+Quota: vmware-system-cloud-provider/system-priorityclass-resourcequota
+Hard: null
+Used: {}
+Scopes: []
+Quota: vmware-system-csi/system-priorityclass-resourcequota
+Hard: null
+Used: {}
+Scopes: []
+LimitRange: secretgen-controller/default-request-limit
+{"defaultRequest":{"cpu":"50m","memory":"100Mi"},"type":"Container"}
+LimitRange: tkg-system/default-request-limit
+{"defaultRequest":{"cpu":"50m","memory":"100Mi"},"type":"Container"}
+LimitRange: vmware-system-helm/ns-limit-range
+{"defaultRequest":{"cpu":"50m","memory":"64Mi"},"type":"Container"}
+
+-------------------------------------------------------------------------------------------
+| 19. CLUSTER COMPONENTS AND CNI / CSI WORKLOADS - qa-cluster-02:qa-cluster-02            |
+-------------------------------------------------------------------------------------------
+Component: kube-system/antrea-agent-29blv
+  Node: qa-cluster-02-ch6v4-wd4kk; phase: Running
+  Container: antrea-agent; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Container: antrea-ovs; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Status: antrea-agent; ready: true; restarts: 0
+  Status: antrea-ovs; ready: true; restarts: 0
+Component: kube-system/antrea-agent-2ntcf
+  Node: qa-cluster-02-ch6v4-gfvxh; phase: Running
+  Container: antrea-agent; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Container: antrea-ovs; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Status: antrea-agent; ready: true; restarts: 0
+  Status: antrea-ovs; ready: true; restarts: 0
+Component: kube-system/antrea-agent-7fqgb
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: antrea-agent; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Container: antrea-ovs; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Status: antrea-agent; ready: true; restarts: 0
+  Status: antrea-ovs; ready: true; restarts: 0
+Component: kube-system/antrea-agent-f297l
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn; phase: Running
+  Container: antrea-agent; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Container: antrea-ovs; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Status: antrea-agent; ready: true; restarts: 0
+  Status: antrea-ovs; ready: true; restarts: 0
+Component: kube-system/antrea-agent-n4fvt
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h; phase: Running
+  Container: antrea-agent; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Container: antrea-ovs; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Status: antrea-agent; ready: true; restarts: 0
+  Status: antrea-ovs; ready: true; restarts: 0
+Component: kube-system/antrea-agent-v88m4
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm; phase: Running
+  Container: antrea-agent; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Container: antrea-ovs; image: localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+  Status: antrea-agent; ready: true; restarts: 0
+  Status: antrea-ovs; ready: true; restarts: 0
+Component: kube-system/antrea-controller-554bb8c745-swlhg
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: antrea-controller; image: localhost:5000/tkg/packages/core/antrea@sha256:6a7ef865f3fc8867b2992241fe9266bdb4ff72fe9bd2a9455787455ed0efecf3
+  Status: antrea-controller; ready: true; restarts: 0
+Component: kube-system/coredns-74754687d6-xfbvf
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: coredns; image: localhost:5000/vmware.io/coredns:v1.13.1_vmware.4-fips
+  Status: coredns; ready: true; restarts: 0
+Component: kube-system/coredns-74754687d6-xplds
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: coredns; image: localhost:5000/vmware.io/coredns:v1.13.1_vmware.4-fips
+  Status: coredns; ready: true; restarts: 0
+Component: kube-system/etcd-qa-cluster-02-ch6v4-gfvxh
+  Node: qa-cluster-02-ch6v4-gfvxh; phase: Running
+  Container: etcd; image: localhost:5000/vmware.io/etcd:v3.5.31_vmware.3-fips
+  Status: etcd; ready: true; restarts: 0
+Component: kube-system/etcd-qa-cluster-02-ch6v4-s7s92
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: etcd; image: localhost:5000/vmware.io/etcd:v3.5.31_vmware.3-fips
+  Status: etcd; ready: true; restarts: 0
+Component: kube-system/etcd-qa-cluster-02-ch6v4-wd4kk
+  Node: qa-cluster-02-ch6v4-wd4kk; phase: Running
+  Container: etcd; image: localhost:5000/vmware.io/etcd:v3.5.31_vmware.3-fips
+  Status: etcd; ready: true; restarts: 0
+Component: kube-system/kube-apiserver-qa-cluster-02-ch6v4-gfvxh
+  Node: qa-cluster-02-ch6v4-gfvxh; phase: Running
+  Container: kube-apiserver; image: localhost:5000/vmware.io/kube-apiserver:v1.35.6_vmware.2
+  Status: kube-apiserver; ready: true; restarts: 0
+Component: kube-system/kube-apiserver-qa-cluster-02-ch6v4-s7s92
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: kube-apiserver; image: localhost:5000/vmware.io/kube-apiserver:v1.35.6_vmware.2
+  Status: kube-apiserver; ready: true; restarts: 0
+Component: kube-system/kube-apiserver-qa-cluster-02-ch6v4-wd4kk
+  Node: qa-cluster-02-ch6v4-wd4kk; phase: Running
+  Container: kube-apiserver; image: localhost:5000/vmware.io/kube-apiserver:v1.35.6_vmware.2
+  Status: kube-apiserver; ready: true; restarts: 0
+Component: kube-system/kube-controller-manager-qa-cluster-02-ch6v4-gfvxh
+  Node: qa-cluster-02-ch6v4-gfvxh; phase: Running
+  Container: kube-controller-manager; image: localhost:5000/vmware.io/kube-controller-manager:v1.35.6_vmware.2
+  Status: kube-controller-manager; ready: true; restarts: 1
+Component: kube-system/kube-controller-manager-qa-cluster-02-ch6v4-s7s92
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: kube-controller-manager; image: localhost:5000/vmware.io/kube-controller-manager:v1.35.6_vmware.2
+  Status: kube-controller-manager; ready: true; restarts: 1
+Component: kube-system/kube-controller-manager-qa-cluster-02-ch6v4-wd4kk
+  Node: qa-cluster-02-ch6v4-wd4kk; phase: Running
+  Container: kube-controller-manager; image: localhost:5000/vmware.io/kube-controller-manager:v1.35.6_vmware.2
+  Status: kube-controller-manager; ready: true; restarts: 0
+Component: kube-system/kube-proxy-6dsqt
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm; phase: Running
+  Container: kube-proxy; image: localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+  Status: kube-proxy; ready: true; restarts: 0
+Component: kube-system/kube-proxy-9rxj4
+  Node: qa-cluster-02-ch6v4-gfvxh; phase: Running
+  Container: kube-proxy; image: localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+  Status: kube-proxy; ready: true; restarts: 0
+Component: kube-system/kube-proxy-d8c75
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: kube-proxy; image: localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+  Status: kube-proxy; ready: true; restarts: 0
+Component: kube-system/kube-proxy-g89wq
+  Node: qa-cluster-02-ch6v4-wd4kk; phase: Running
+  Container: kube-proxy; image: localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+  Status: kube-proxy; ready: true; restarts: 0
+Component: kube-system/kube-proxy-hxbpp
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn; phase: Running
+  Container: kube-proxy; image: localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+  Status: kube-proxy; ready: true; restarts: 0
+Component: kube-system/kube-proxy-nrtbk
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h; phase: Running
+  Container: kube-proxy; image: localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+  Status: kube-proxy; ready: true; restarts: 0
+Component: kube-system/kube-scheduler-qa-cluster-02-ch6v4-gfvxh
+  Node: qa-cluster-02-ch6v4-gfvxh; phase: Running
+  Container: kube-scheduler; image: localhost:5000/vmware.io/kube-scheduler:v1.35.6_vmware.2
+  Status: kube-scheduler; ready: true; restarts: 1
+Component: kube-system/kube-scheduler-qa-cluster-02-ch6v4-s7s92
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: kube-scheduler; image: localhost:5000/vmware.io/kube-scheduler:v1.35.6_vmware.2
+  Status: kube-scheduler; ready: true; restarts: 1
+Component: kube-system/kube-scheduler-qa-cluster-02-ch6v4-wd4kk
+  Node: qa-cluster-02-ch6v4-wd4kk; phase: Running
+  Container: kube-scheduler; image: localhost:5000/vmware.io/kube-scheduler:v1.35.6_vmware.2
+  Status: kube-scheduler; ready: true; restarts: 0
+Component: kube-system/metrics-server-9497f774-5bqb5
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: metrics-server; image: localhost:5000/tkg/packages/core/metrics-server@sha256:a1d33fad1adb68ce226a7dbdea86213ee2862faee5ae7738eb78d6d602c04835
+  Status: metrics-server; ready: true; restarts: 0
+Component: kube-system/snapshot-controller-866d4b7bdd-9m7xb
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: snapshot-controller; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:10e9bb15981bdcbdfe17c2e0719a53ca251610e624b264c9ed40217a39e3f108
+  Status: snapshot-controller; ready: true; restarts: 0
+Component: vmware-system-auth/guest-cluster-auth-svc-bkz2z
+  Node: qa-cluster-02-ch6v4-wd4kk; phase: Running
+  Container: guest-cluster-auth-service; image: localhost:5000/tkg/packages/core/guest-cluster-auth-service@sha256:825550236b90546ddc98ac3ef029cbe04c89026f3108bd4713f08526683878ce
+  Status: guest-cluster-auth-service; ready: true; restarts: 0
+Component: vmware-system-auth/guest-cluster-auth-svc-c52r4
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: guest-cluster-auth-service; image: localhost:5000/tkg/packages/core/guest-cluster-auth-service@sha256:825550236b90546ddc98ac3ef029cbe04c89026f3108bd4713f08526683878ce
+  Status: guest-cluster-auth-service; ready: true; restarts: 0
+Component: vmware-system-auth/guest-cluster-auth-svc-jz97h
+  Node: qa-cluster-02-ch6v4-gfvxh; phase: Running
+  Container: guest-cluster-auth-service; image: localhost:5000/tkg/packages/core/guest-cluster-auth-service@sha256:825550236b90546ddc98ac3ef029cbe04c89026f3108bd4713f08526683878ce
+  Status: guest-cluster-auth-service; ready: true; restarts: 0
+Component: vmware-system-cloud-provider/guest-cluster-cloud-provider-ccdc7fd86-dpctl
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: guest-cluster-cloud-provider; image: localhost:5000/tkg/packages/core/vsphere-cpi@sha256:8c1a26323628e500789bb01a8be193677802132c0c06f720a16dec5347838591
+  Status: guest-cluster-cloud-provider; ready: true; restarts: 2
+Component: vmware-system-csi/vsphere-csi-controller-85998dcf6b-5hclj
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: csi-attacher; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:30c8305fa19cded20f762768afdd7bd22bdc58ad510d8882b56320941527ccbe
+  Container: vsphere-csi-controller; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+  Container: vsphere-syncer; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:973dd482f622f45b5e000fc12a6fceebf22fa2580ca0d1484c6988e508d4f48a
+  Container: liveness-probe; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+  Container: csi-provisioner; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:63a5dae347a4e62b14cbe20d8178f7d820514df5bb11b1f48009cdcea3a216b2
+  Container: csi-resizer; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:f7af53b42b21b81f291aa58df4ad2f4d2d2dcf933757250840461316c977bcbe
+  Container: csi-snapshotter; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:29fc521a0512929c09b69daf7fcf8029e6f02c74c51990d950329184731f7595
+  Status: csi-attacher; ready: true; restarts: 0
+  Status: csi-provisioner; ready: true; restarts: 0
+  Status: csi-resizer; ready: true; restarts: 0
+  Status: csi-snapshotter; ready: true; restarts: 0
+  Status: liveness-probe; ready: true; restarts: 0
+  Status: vsphere-csi-controller; ready: true; restarts: 0
+  Status: vsphere-syncer; ready: true; restarts: 0
+Component: vmware-system-csi/vsphere-csi-node-4cz4j
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm; phase: Running
+  Container: node-driver-registrar; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+  Container: vsphere-csi-node; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+  Container: liveness-probe; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+  Status: liveness-probe; ready: true; restarts: 0
+  Status: node-driver-registrar; ready: true; restarts: 1
+  Status: vsphere-csi-node; ready: true; restarts: 1
+Component: vmware-system-csi/vsphere-csi-node-6kpxq
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn; phase: Running
+  Container: node-driver-registrar; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+  Container: vsphere-csi-node; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+  Container: liveness-probe; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+  Status: liveness-probe; ready: true; restarts: 0
+  Status: node-driver-registrar; ready: true; restarts: 3
+  Status: vsphere-csi-node; ready: true; restarts: 0
+Component: vmware-system-csi/vsphere-csi-node-tnwj7
+  Node: qa-cluster-02-ch6v4-wd4kk; phase: Running
+  Container: node-driver-registrar; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+  Container: vsphere-csi-node; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+  Container: liveness-probe; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+  Status: liveness-probe; ready: true; restarts: 0
+  Status: node-driver-registrar; ready: true; restarts: 0
+  Status: vsphere-csi-node; ready: true; restarts: 0
+Component: vmware-system-csi/vsphere-csi-node-tzf24
+  Node: qa-cluster-02-ch6v4-gfvxh; phase: Running
+  Container: node-driver-registrar; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+  Container: vsphere-csi-node; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+  Container: liveness-probe; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+  Status: liveness-probe; ready: true; restarts: 0
+  Status: node-driver-registrar; ready: true; restarts: 1
+  Status: vsphere-csi-node; ready: true; restarts: 0
+Component: vmware-system-csi/vsphere-csi-node-w4p9h
+  Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h; phase: Running
+  Container: node-driver-registrar; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+  Container: vsphere-csi-node; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+  Container: liveness-probe; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+  Status: liveness-probe; ready: true; restarts: 0
+  Status: node-driver-registrar; ready: true; restarts: 4
+  Status: vsphere-csi-node; ready: true; restarts: 0
+Component: vmware-system-csi/vsphere-csi-node-wpwfx
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: node-driver-registrar; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+  Container: vsphere-csi-node; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+  Container: liveness-probe; image: localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+  Status: liveness-probe; ready: true; restarts: 0
+  Status: node-driver-registrar; ready: true; restarts: 5
+  Status: vsphere-csi-node; ready: true; restarts: 0
+Component: vmware-system-helm/helm-controller-77d9f5975f-2vt6l
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: manager; image: projects.packages.broadcom.com/vsphere/supervisor/vks-standard-packages/3.7.0-20260723/vks-addons@sha256:e23cb8c7b2f7156f6021ccfbdc6f8911baa55605587a725bea753cf6d7869497
+  Status: manager; ready: true; restarts: 0
+Component: vmware-system-helm/source-controller-7dd755d7b9-7rcm4
+  Node: qa-cluster-02-ch6v4-s7s92; phase: Running
+  Container: manager; image: projects.packages.broadcom.com/vsphere/supervisor/vks-standard-packages/3.7.0-20260723/vks-addons@sha256:af645846c8bf6e3830af1644f182ad2c2d9164cd4e9b45573fdc8ab29cc0c67f
+  Status: manager; ready: true; restarts: 0
+
+-------------------------------------------------------------------------------------------
+| 20. CNI AND CSI CONFIGURATION SETTINGS - qa-cluster-02:qa-cluster-02                    |
+-------------------------------------------------------------------------------------------
+Explicit ConfigMap settings follow; omitted settings do not establish effective defaults.
+Secret contents and node-local CNI files are not collected.
+
+ConfigMap: kube-system/antrea-agent-tweaker
+Available keys: antrea-agent-tweaker.conf
+
+ConfigMap: kube-system/antrea-ca
+Available keys: ca.crt
+
+ConfigMap: kube-system/antrea-cluster-identity
+Available keys: uuid
+
+ConfigMap: kube-system/antrea-config
+Available keys: antrea-agent.conf, antrea-cni.conflist, antrea-controller.conf
+Setting: antrea-agent.conf
+featureGates:
+  AntreaProxy: true
+  Traceflow: true
+  PacketCapture: false
+  AntreaPolicy: true
+  FlowExporter: false
+  NetworkPolicyStats: true
+  Egress: true
+  AntreaIPAM: false
+  Multicast: true
+  ServiceExternalIP: true
+  SecondaryNetwork: false
+  TrafficControl: false
+  SupportBundleCollection: false
+  CleanupStaleUDPSvcConntrack: true
+  NodeLatencyMonitor: false
+  EgressSeparateSubnet: true
+trafficEncapMode: encap
+noSNAT: false
+tunnelType: geneve
+trafficEncryptionMode: none
+defaultMTU: 0
+serviceCIDR: 10.96.0.0/12
+nodePortLocal:
+  enable: true
+  portRange: 61000-62000
+multicast:
+  enable: false
+  igmpQueryInterval: 125s
+antreaProxy:
+  enable: true
+  proxyAll: false
+  nodePortAddresses: []
+  skipServices: []
+  defaultLoadBalancerMode: nat
+  disableServiceHealthCheckServer: false
+Setting: antrea-controller.conf
+featureGates:
+  Traceflow: true
+  AntreaPolicy: true
+  NetworkPolicyStats: true
+  Multicast: true
+  Egress: true
+  AntreaIPAM: false
+  SupportBundleCollection: false
+  AdminNetworkPolicy: false
+
+ConfigMap: kube-system/kube-proxy
+Available keys: config.conf, kubeconfig.conf
+
+ConfigMap: vmware-system-csi/csi-feature-states
+Available keys: block-volume-snapshot, cnsmgr-suspend-create-volume, csi-sv-feature-states-replication, fake-attach, file-volume, improved-csi-idempotency, list-volumes, online-volume-extend, storage-quota-m2, sv-pvc-snapshot-protection-finalizer, tkgs-ha, trigger-csi-fullsync, volume-extend, volume-health, workload-domain-isolation
+Setting: block-volume-snapshot
+true
+Setting: cnsmgr-suspend-create-volume
+true
+Setting: csi-sv-feature-states-replication
+true
+Setting: fake-attach
+true
+Setting: file-volume
+true
+Setting: improved-csi-idempotency
+true
+Setting: list-volumes
+true
+Setting: online-volume-extend
+true
+Setting: storage-quota-m2
+true
+Setting: sv-pvc-snapshot-protection-finalizer
+true
+Setting: tkgs-ha
+true
+Setting: trigger-csi-fullsync
+false
+Setting: volume-extend
+true
+Setting: volume-health
+true
+Setting: workload-domain-isolation
+true
+
+ConfigMap: vmware-system-csi/internal-feature-states.csi.vsphere.vmware.com
+Available keys: block-volume-snapshot, cnsmgr-suspend-create-volume, csi-sv-feature-states-replication, csi-windows-support, file-volume, linked-clone-support, online-volume-extend, sv-pvc-snapshot-protection-finalizer, tkgs-ha, workload-domain-isolation
+Setting: block-volume-snapshot
+true
+Setting: cnsmgr-suspend-create-volume
+true
+Setting: csi-sv-feature-states-replication
+false
+Setting: csi-windows-support
+true
+Setting: file-volume
+true
+Setting: linked-clone-support
+true
+Setting: online-volume-extend
+true
+Setting: sv-pvc-snapshot-protection-finalizer
+false
+Setting: tkgs-ha
+true
+Setting: workload-domain-isolation
+true
+
+ConfigMap: vmware-system-csi/pvcsi-config
+Available keys: cns-csi.conf
+bindAddress: 0.0.0.0
+clusterCIDR: 10.95.0.0/16
+detectLocalMode: ""
+healthzBindAddress: ""
+metricsBindAddress: ""
+mode: ""
+CNI plugin configuration: kube-system/antrea-config
+Network: antrea; CNI specification: 0.3.0
+Plugin: antrea; IPAM: host-local; MTU: <not explicit>; capabilities: {}
+Plugin: portmap; IPAM: <none>; MTU: <not explicit>; capabilities: {"portMappings":true}
+Plugin: bandwidth; IPAM: <none>; MTU: <not explicit>; capabilities: {"bandwidth":true}
+CSI configuration: vmware-system-csi/pvcsi-config
+port = 6443
+cluster-distribution = "TKGService"
+No resources found
+NAME                                                 HEALTHY   LAST HEARTBEAT
+qa-cluster-02-ch6v4-gfvxh                            True      19s
+qa-cluster-02-ch6v4-s7s92                            True      53s
+qa-cluster-02-ch6v4-wd4kk                            True      25s
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   True      45s
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   True      21s
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   True      31s
+NAME                HEALTHY   LAST HEARTBEAT
+antrea-controller   True      32s
+No resources found
+No resources found
+No resources found
+
+-------------------------------------------------------------------------------------------
+| 21. CSI DRIVERS, NODE REGISTRATION AND ATTACHMENTS - qa-cluster-02:qa-cluster-02        |
+-------------------------------------------------------------------------------------------
+
+CSI driver: csi.vsphere.vmware.com
+Settings: {"attachRequired":true,"fsGroupPolicy":"ReadWriteOnceWithFSType","podInfoOnMount":false,"requiresRepublish":false,"seLinuxMount":false,"storageCapacity":true,"volumeLifecycleModes":["Persistent"]}
+Node: qa-cluster-02-ch6v4-gfvxh
+Driver: csi.vsphere.vmware.com
+Driver node ID: qa-cluster-02-ch6v4-gfvxh
+Topology keys: topology.kubernetes.io/zone
+Volume limit: 59
+
+Node: qa-cluster-02-ch6v4-s7s92
+Driver: csi.vsphere.vmware.com
+Driver node ID: qa-cluster-02-ch6v4-s7s92
+Topology keys: topology.kubernetes.io/zone
+Volume limit: 59
+
+Node: qa-cluster-02-ch6v4-wd4kk
+Driver: csi.vsphere.vmware.com
+Driver node ID: qa-cluster-02-ch6v4-wd4kk
+Topology keys: topology.kubernetes.io/zone
+Volume limit: 59
+
+Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h
+Driver: csi.vsphere.vmware.com
+Driver node ID: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h
+Topology keys: topology.kubernetes.io/zone
+Volume limit: 59
+
+Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm
+Driver: csi.vsphere.vmware.com
+Driver node ID: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm
+Topology keys: topology.kubernetes.io/zone
+Volume limit: 59
+
+Node: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn
+Driver: csi.vsphere.vmware.com
+Driver node ID: qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn
+Topology keys: topology.kubernetes.io/zone
+Volume limit: 59
+
+ATTACHMENT   DRIVER   NODE   PV    ATTACHED   ATTACH-ERROR   DETACH-ERROR
+NAMESPACE           NAME          STORAGECLASS                              CAPACITY              MAX-VOLUME            TOPOLOGY
+vmware-system-csi   csisc-dqwqx   vsan-default-storage-policy-latebinding   9223372036854775807   9223372036854775807   map[matchLabels:map[topology.kubernetes.io/zone:lab-zone-01]]
+NAME                         DRIVER                   DELETIONPOLICY   AGE
+volumesnapshotclass-delete   csi.vsphere.vmware.com   Delete           59m
+No resources found
+No resources found
+
+-------------------------------------------------------------------------------------------
+| 22. RECENT WARNING EVENTS - qa-cluster-02:qa-cluster-02                                 |
+-------------------------------------------------------------------------------------------
+Events currently retained by the API; this is not a historical audit log.
+NAMESPACE                      OBJECT-KIND   OBJECT                                              REASON                   COUNT   FIRST-SEEN             LAST-SEEN              EVENT-TIME   SERIES-LAST   MESSAGE
+kube-system                    Pod           kube-scheduler-qa-cluster-02-ch6v4-s7s92            Unhealthy                2       2026-10-22T12:22:57Z   2026-10-22T12:22:57Z   <nil>        <none>        Readiness probe failed: HTTP probe failed with statuscode: 500
+kube-system                    Pod           kube-controller-manager-qa-cluster-02-ch6v4-s7s92   NodeNotReady             1       2026-10-22T12:23:01Z   2026-10-22T12:23:01Z   <nil>        <none>        Node is not ready
+kube-system                    Pod           kube-scheduler-qa-cluster-02-ch6v4-s7s92            NodeNotReady             1       2026-10-22T12:23:01Z   2026-10-22T12:23:01Z   <nil>        <none>        Node is not ready
+kube-system                    Pod           kube-apiserver-qa-cluster-02-ch6v4-s7s92            NodeNotReady             1       2026-10-22T12:23:01Z   2026-10-22T12:23:01Z   <nil>        <none>        Node is not ready
+kube-system                    Pod           coredns-56b966f5f8-lbggx                            FailedScheduling         1       2026-10-22T12:23:02Z   2026-10-22T12:23:02Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+kube-system                    Pod           coredns-56b966f5f8-p682w                            FailedScheduling         1       2026-10-22T12:23:02Z   2026-10-22T12:23:02Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+kube-system                    Pod           coredns-74754687d6-xplds                            FailedScheduling         1       2026-10-22T12:23:22Z   2026-10-22T12:23:22Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+kube-system                    Pod           snapshot-controller-866d4b7bdd-9m7xb                FailedScheduling         1       2026-10-22T12:23:25Z   2026-10-22T12:23:25Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+kube-system                    Pod           metrics-server-9497f774-5bqb5                       FailedScheduling         1       2026-10-22T12:23:25Z   2026-10-22T12:23:25Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+vmware-system-csi              Pod           vsphere-csi-controller-85998dcf6b-5hclj             FailedScheduling         1       2026-10-22T12:23:25Z   2026-10-22T12:23:25Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+vmware-system-csi              Pod           vsphere-csi-node-wpwfx                              BackOff                  9       2026-10-22T12:23:34Z   2026-10-22T12:26:51Z   <nil>        <none>        Back-off restarting failed container node-driver-registrar in pod vsphere-csi-node-wpwfx_vmware-system-csi(cf0d91be-038e-4368-8e07-da325255ede1)
+kube-system                    Pod           antrea-controller-554bb8c745-swlhg                  FailedScheduling         1       2026-10-22T12:23:43Z   2026-10-22T12:23:43Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+vmware-system-helm             Pod           helm-controller-77d9f5975f-2vt6l                    FailedScheduling         1       2026-10-22T12:23:59Z   2026-10-22T12:23:59Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+vmware-system-helm             Pod           source-controller-7dd755d7b9-7rcm4                  FailedScheduling         1       2026-10-22T12:23:59Z   2026-10-22T12:23:59Z   <nil>        <none>        0/1 nodes are available: 1 node(s) had untolerated taint(s). no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+vmware-system-csi              Pod           vsphere-csi-controller-85998dcf6b-5hclj             FailedCreatePodSandBox   1       2026-10-22T12:24:20Z   2026-10-22T12:24:20Z   <nil>        <none>        Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "4989689054080e652e842910b93424ccdaffb88013541ada5ae4a1677220e915": plugin type="antrea" failed (add): rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial unix /var/run/antrea/cni.sock: connect: no such file or directory"
+vmware-system-helm             Pod           helm-controller-77d9f5975f-2vt6l                    FailedCreatePodSandBox   1       2026-10-22T12:24:21Z   2026-10-22T12:24:21Z   <nil>        <none>        Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "4e4a97c6f188bc321985e5098a5eb2be66b2ea99d0f004c98292a65b1516e605": plugin type="antrea" failed (add): rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial unix /var/run/antrea/cni.sock: connect: no such file or directory"
+vmware-system-helm             Pod           source-controller-7dd755d7b9-7rcm4                  FailedCreatePodSandBox   1       2026-10-22T12:24:21Z   2026-10-22T12:24:21Z   <nil>        <none>        Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "f93a0d2ba4ffbd150fab4572ba427502789870aa3d319be136e690f81a105097": plugin type="antrea" failed (add): rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial unix /var/run/antrea/cni.sock: connect: no such file or directory"
+kube-system                    Pod           snapshot-controller-866d4b7bdd-9m7xb                FailedCreatePodSandBox   1       2026-10-22T12:24:23Z   2026-10-22T12:24:23Z   <nil>        <none>        Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "33468c2b19caad55590bc177d520ebcd976b1d9321242cfcb092842da0d680da": plugin type="antrea" failed (add): rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial unix /var/run/antrea/cni.sock: connect: no such file or directory"
+kube-system                    Pod           metrics-server-9497f774-5bqb5                       FailedCreatePodSandBox   1       2026-10-22T12:24:23Z   2026-10-22T12:24:23Z   <nil>        <none>        Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "2898e510844cf56a18acb3dc76eedc32d0a456e108a7abb94cfb5c7e3957c874": plugin type="antrea" failed (add): rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial unix /var/run/antrea/cni.sock: connect: no such file or directory"
+kube-system                    Pod           coredns-56b966f5f8-lbggx                            FailedCreatePodSandBox   1       2026-10-22T12:24:23Z   2026-10-22T12:24:23Z   <nil>        <none>        Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "63cf7472ca6058add5fea3196162a5e1077239916288d55f7db41df739fa83e5": plugin type="antrea" failed (add): rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial unix /var/run/antrea/cni.sock: connect: no such file or directory"
+kube-system                    Pod           coredns-56b966f5f8-p682w                            FailedCreatePodSandBox   1       2026-10-22T12:24:23Z   2026-10-22T12:24:23Z   <nil>        <none>        Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "a1e6f08311f93ccc5e69cd5b1b075877715075a568cae9a0b8175c972031e9fe": plugin type="antrea" failed (add): rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial unix /var/run/antrea/cni.sock: connect: no such file or directory"
+kube-system                    Pod           coredns-74754687d6-xplds                            FailedCreatePodSandBox   1       2026-10-22T12:24:23Z   2026-10-22T12:24:23Z   <nil>        <none>        Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "3b00fdc149296a1bc50d1fce3f039c43e3196dd3b0d3d4d540398bb5a7d651b9": plugin type="antrea" failed (add): rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial unix /var/run/antrea/cni.sock: connect: no such file or directory"
+kube-system                    Pod           antrea-agent-7fqgb                                  Unhealthy                3       2026-10-22T12:24:36Z   2026-10-22T12:24:56Z   <nil>        <none>        Readiness probe failed: HTTP probe failed with statuscode: 500
+kube-system                    Pod           coredns-56b966f5f8-lbggx                            Unhealthy                1       2026-10-22T12:24:56Z   2026-10-22T12:24:56Z   <nil>        <none>        Readiness probe failed: Get "http://10.95.0.6:8181/ready": dial tcp 10.95.0.6:8181: connect: connection refused
+kube-system                    Pod           kube-apiserver-qa-cluster-02-ch6v4-s7s92            Unhealthy                18      2026-10-22T12:25:15Z   2026-10-22T12:27:02Z   <nil>        <none>        Readiness probe failed: HTTP probe failed with statuscode: 500
+kube-system                    Pod           etcd-qa-cluster-02-ch6v4-s7s92                      Unhealthy                3       2026-10-22T12:25:17Z   2026-10-22T12:26:50Z   <nil>        <none>        Readiness probe failed: HTTP probe failed with statuscode: 503
+kube-system                    Pod           kube-apiserver-qa-cluster-02-ch6v4-s7s92            Unhealthy                5       2026-10-22T12:25:20Z   2026-10-22T12:27:02Z   <nil>        <none>        Liveness probe failed: HTTP probe failed with statuscode: 500
+kube-system                    Pod           antrea-agent-f297l                                  Unhealthy                1       2026-10-22T12:25:28Z   2026-10-22T12:25:28Z   <nil>        <none>        Readiness probe failed: Get "https://localhost:10350/readyz": dial tcp 127.0.0.1:10350: connect: connection refused
+kube-system                    Pod           antrea-agent-f297l                                  Unhealthy                1       2026-10-22T12:25:31Z   2026-10-22T12:25:31Z   <nil>        <none>        Liveness probe failed: Get "https://localhost:10350/livez": dial tcp 127.0.0.1:10350: connect: connection refused
+vmware-system-csi              Pod           vsphere-csi-node-6kpxq                              BackOff                  4       2026-10-22T12:25:46Z   2026-10-22T12:26:10Z   <nil>        <none>        Back-off restarting failed container node-driver-registrar in pod vsphere-csi-node-6kpxq_vmware-system-csi(a2649683-fce1-43dd-961b-0e959b2e0e1b)
+kube-system                    Pod           kube-scheduler-qa-cluster-02-ch6v4-s7s92            Unhealthy                6       2026-10-22T12:25:28Z   2026-10-22T12:25:33Z   <nil>        <none>        Readiness probe failed: Get "https://127.0.0.1:10259/readyz": dial tcp 127.0.0.1:10259: connect: connection refused
+kube-system                    Pod           kube-scheduler-qa-cluster-02-ch6v4-s7s92            Unhealthy                1       2026-10-22T12:25:28Z   2026-10-22T12:25:28Z   <nil>        <none>        Liveness probe failed: Get "https://127.0.0.1:10259/livez": dial tcp 127.0.0.1:10259: connect: connection refused
+vmware-system-csi              Pod           vsphere-csi-node-w4p9h                              BackOff                  6       2026-10-22T12:25:37Z   2026-10-22T12:26:21Z   <nil>        <none>        Back-off restarting failed container node-driver-registrar in pod vsphere-csi-node-w4p9h_vmware-system-csi(d3b9221c-d8ab-4784-b401-29ec0c2674ec)
+kube-system                    Pod           kube-apiserver-qa-cluster-02-ch6v4-gfvxh            Unhealthy                11      2026-10-22T12:25:48Z   2026-10-22T12:27:03Z   <nil>        <none>        Readiness probe failed: HTTP probe failed with statuscode: 500
+kube-system                    Pod           kube-apiserver-qa-cluster-02-ch6v4-gfvxh            Unhealthy                3       2026-10-22T12:26:04Z   2026-10-22T12:26:54Z   <nil>        <none>        Liveness probe failed: HTTP probe failed with statuscode: 500
+vmware-system-helm             Pod           source-controller-7dd755d7b9-7rcm4                  Unhealthy                2       2026-10-22T12:26:08Z   2026-10-22T12:26:09Z   <nil>        <none>        Readiness probe failed: Get "http://10.95.0.4:9090/": dial tcp 10.95.0.4:9090: connect: connection refused
+kube-system                    Pod           etcd-qa-cluster-02-ch6v4-gfvxh                      Unhealthy                3       2026-10-22T12:25:41Z   2026-10-22T12:26:55Z   <nil>        <none>        Readiness probe failed: HTTP probe failed with statuscode: 503
+kube-system                    Pod           antrea-agent-v88m4                                  Unhealthy                2       2026-10-22T12:26:52Z   2026-10-22T12:27:02Z   <nil>        <none>        Readiness probe failed: Get "https://localhost:10350/readyz": dial tcp 127.0.0.1:10350: connect: connection refused
+vmware-system-cloud-provider   Pod           guest-cluster-cloud-provider-ccdc7fd86-dpctl        BackOff                  1       2026-10-22T12:26:47Z   2026-10-22T12:26:47Z   <nil>        <none>        Back-off restarting failed container guest-cluster-cloud-provider in pod guest-cluster-cloud-provider-ccdc7fd86-dpctl_vmware-system-cloud-provider(e15eb04b-e839-4445-9a68-3d869f71adcd)
+kube-system                    Pod           antrea-agent-v88m4                                  Unhealthy                2       2026-10-22T12:26:52Z   2026-10-22T12:27:02Z   <nil>        <none>        Liveness probe failed: Get "https://localhost:10350/livez": dial tcp 127.0.0.1:10350: connect: connection refused
+kube-system                    Pod           kube-controller-manager-qa-cluster-02-ch6v4-gfvxh   Unhealthy                2       2026-10-22T12:26:46Z   2026-10-22T12:26:56Z   <nil>        <none>        Liveness probe failed: Get "https://127.0.0.1:10257/healthz": dial tcp 127.0.0.1:10257: connect: connection refused
+kube-system                    Pod           kube-scheduler-qa-cluster-02-ch6v4-gfvxh            Unhealthy                5       2026-10-22T12:26:52Z   2026-10-22T12:26:55Z   <nil>        <none>        Readiness probe failed: Get "https://127.0.0.1:10259/readyz": dial tcp 127.0.0.1:10259: connect: connection refused
+
+-------------------------------------------------------------------------------------------
+| 23. CURRENT RESOURCE USAGE - qa-cluster-02:qa-cluster-02                                |
+-------------------------------------------------------------------------------------------
+NAME                                                 CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+qa-cluster-02-ch6v4-gfvxh                            76m          3%       1126Mi          18%         
+qa-cluster-02-ch6v4-s7s92                            95m          4%       1825Mi          30%         
+qa-cluster-02-ch6v4-wd4kk                            53m          2%       944Mi           15%         
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-cfd6h   16m          0%       539Mi           8%          
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-kv2xm   20m          1%       525Mi           8%          
+qa-cluster-02-qa-cluster-02-np01-d5pc8-8hbrl-lptcn   14m          0%       541Mi           8%          
+NAMESPACE                      NAME                                                CPU(cores)   MEMORY(bytes)   
+kube-system                    antrea-agent-29blv                                  8m           89Mi            
+kube-system                    antrea-agent-2ntcf                                  9m           91Mi            
+kube-system                    antrea-agent-7fqgb                                  7m           92Mi            
+kube-system                    antrea-agent-f297l                                  6m           90Mi            
+kube-system                    antrea-agent-n4fvt                                  6m           89Mi            
+kube-system                    antrea-agent-v88m4                                  8m           89Mi            
+kube-system                    antrea-controller-554bb8c745-swlhg                  2m           48Mi            
+kube-system                    coredns-74754687d6-xfbvf                            1m           12Mi            
+kube-system                    coredns-74754687d6-xplds                            1m           11Mi            
+kube-system                    etcd-qa-cluster-02-ch6v4-gfvxh                      23m          89Mi            
+kube-system                    etcd-qa-cluster-02-ch6v4-s7s92                      18m          98Mi            
+kube-system                    etcd-qa-cluster-02-ch6v4-wd4kk                      14m          75Mi            
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-gfvxh            23m          440Mi           
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-s7s92            22m          486Mi           
+kube-system                    kube-apiserver-qa-cluster-02-ch6v4-wd4kk            14m          289Mi           
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-gfvxh   1m           15Mi            
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-s7s92   7m           62Mi            
+kube-system                    kube-controller-manager-qa-cluster-02-ch6v4-wd4kk   1m           15Mi            
+kube-system                    kube-proxy-6dsqt                                    1m           12Mi            
+kube-system                    kube-proxy-9rxj4                                    1m           12Mi            
+kube-system                    kube-proxy-d8c75                                    1m           12Mi            
+kube-system                    kube-proxy-g89wq                                    1m           12Mi            
+kube-system                    kube-proxy-hxbpp                                    1m           12Mi            
+kube-system                    kube-proxy-nrtbk                                    1m           12Mi            
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-gfvxh            3m           24Mi            
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-s7s92            3m           24Mi            
+kube-system                    kube-scheduler-qa-cluster-02-ch6v4-wd4kk            3m           23Mi            
+kube-system                    metrics-server-9497f774-5bqb5                       2m           22Mi            
+kube-system                    snapshot-controller-866d4b7bdd-9m7xb                1m           7Mi             
+secretgen-controller           secretgen-controller-6b45cf44c6-kstj5               1m           10Mi            
+tkg-system                     kapp-controller-5cbf5b8969-jk76t                    2m           55Mi            
+vmware-system-auth             guest-cluster-auth-svc-bkz2z                        1m           5Mi             
+vmware-system-auth             guest-cluster-auth-svc-c52r4                        1m           5Mi             
+vmware-system-auth             guest-cluster-auth-svc-jz97h                        1m           5Mi             
+vmware-system-cloud-provider   guest-cluster-cloud-provider-ccdc7fd86-dpctl        1m           17Mi            
+vmware-system-csi              vsphere-csi-controller-85998dcf6b-5hclj             3m           69Mi            
+vmware-system-csi              vsphere-csi-node-4cz4j                              1m           21Mi            
+vmware-system-csi              vsphere-csi-node-6kpxq                              1m           22Mi            
+vmware-system-csi              vsphere-csi-node-tnwj7                              1m           21Mi            
+vmware-system-csi              vsphere-csi-node-tzf24                              1m           21Mi            
+vmware-system-csi              vsphere-csi-node-w4p9h                              1m           22Mi            
+vmware-system-csi              vsphere-csi-node-wpwfx                              1m           21Mi            
+vmware-system-helm             helm-controller-77d9f5975f-2vt6l                    1m           14Mi            
+vmware-system-helm             source-controller-7dd755d7b9-7rcm4                  1m           16Mi            
+
+-------------------------------------------------------------------------------------------
+| 24. NAMESPACE POD IMAGE - qa-cluster-02:qa-cluster-02                                   |
+-------------------------------------------------------------------------------------------
+Configured images; one row per regular, init or ephemeral container.
+NAMESPACE                    | POD                                               | CONTAINER IMAGE                                                                                                                                                          
+-----------------------------+---------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+kube-system                  | antrea-agent-29blv                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-29blv                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-29blv                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-29blv                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-29blv                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-2ntcf                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-2ntcf                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-2ntcf                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-2ntcf                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-2ntcf                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-7fqgb                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-7fqgb                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-7fqgb                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-7fqgb                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-7fqgb                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-f297l                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-f297l                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-f297l                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-f297l                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-f297l                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-n4fvt                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-n4fvt                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-n4fvt                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-n4fvt                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-n4fvt                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-v88m4                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-v88m4                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-v88m4                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-v88m4                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-agent-v88m4                                | localhost:5000/tkg/packages/core/antrea@sha256:ecb4ea8582f885d30601134665fac5af1310253638077940abdd9630bc13a418
+kube-system                  | antrea-controller-554bb8c745-swlhg                | localhost:5000/tkg/packages/core/antrea@sha256:6a7ef865f3fc8867b2992241fe9266bdb4ff72fe9bd2a9455787455ed0efecf3
+kube-system                  | coredns-74754687d6-xfbvf                          | localhost:5000/vmware.io/coredns:v1.13.1_vmware.4-fips
+kube-system                  | coredns-74754687d6-xplds                          | localhost:5000/vmware.io/coredns:v1.13.1_vmware.4-fips
+kube-system                  | etcd-qa-cluster-02-ch6v4-gfvxh                    | localhost:5000/vmware.io/etcd:v3.5.31_vmware.3-fips
+kube-system                  | etcd-qa-cluster-02-ch6v4-s7s92                    | localhost:5000/vmware.io/etcd:v3.5.31_vmware.3-fips
+kube-system                  | etcd-qa-cluster-02-ch6v4-wd4kk                    | localhost:5000/vmware.io/etcd:v3.5.31_vmware.3-fips
+kube-system                  | kube-apiserver-qa-cluster-02-ch6v4-gfvxh          | localhost:5000/vmware.io/kube-apiserver:v1.35.6_vmware.2
+kube-system                  | kube-apiserver-qa-cluster-02-ch6v4-s7s92          | localhost:5000/vmware.io/kube-apiserver:v1.35.6_vmware.2
+kube-system                  | kube-apiserver-qa-cluster-02-ch6v4-wd4kk          | localhost:5000/vmware.io/kube-apiserver:v1.35.6_vmware.2
+kube-system                  | kube-controller-manager-qa-cluster-02-ch6v4-gfvxh | localhost:5000/vmware.io/kube-controller-manager:v1.35.6_vmware.2
+kube-system                  | kube-controller-manager-qa-cluster-02-ch6v4-s7s92 | localhost:5000/vmware.io/kube-controller-manager:v1.35.6_vmware.2
+kube-system                  | kube-controller-manager-qa-cluster-02-ch6v4-wd4kk | localhost:5000/vmware.io/kube-controller-manager:v1.35.6_vmware.2
+kube-system                  | kube-proxy-6dsqt                                  | localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+kube-system                  | kube-proxy-9rxj4                                  | localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+kube-system                  | kube-proxy-d8c75                                  | localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+kube-system                  | kube-proxy-g89wq                                  | localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+kube-system                  | kube-proxy-hxbpp                                  | localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+kube-system                  | kube-proxy-nrtbk                                  | localhost:5000/vmware.io/kube-proxy:v1.35.6_vmware.2
+kube-system                  | kube-scheduler-qa-cluster-02-ch6v4-gfvxh          | localhost:5000/vmware.io/kube-scheduler:v1.35.6_vmware.2
+kube-system                  | kube-scheduler-qa-cluster-02-ch6v4-s7s92          | localhost:5000/vmware.io/kube-scheduler:v1.35.6_vmware.2
+kube-system                  | kube-scheduler-qa-cluster-02-ch6v4-wd4kk          | localhost:5000/vmware.io/kube-scheduler:v1.35.6_vmware.2
+kube-system                  | metrics-server-9497f774-5bqb5                     | localhost:5000/tkg/packages/core/metrics-server@sha256:a1d33fad1adb68ce226a7dbdea86213ee2862faee5ae7738eb78d6d602c04835
+kube-system                  | snapshot-controller-866d4b7bdd-9m7xb              | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:10e9bb15981bdcbdfe17c2e0719a53ca251610e624b264c9ed40217a39e3f108
+secretgen-controller         | secretgen-controller-6b45cf44c6-kstj5             | localhost:5000/tkg/packages/core/secretgen-controller@sha256:5035d2557843471781cd3e3d763b4be923c75cb8767039e6573fd667f9a36693
+tkg-system                   | kapp-controller-5cbf5b8969-jk76t                  | localhost:5000/tkg/packages/core/kapp-controller@sha256:517a2c732f1af463d27d5ca395e5d0a740d3d3477fd6269fad7c669a3d359b54
+tkg-system                   | kapp-controller-5cbf5b8969-jk76t                  | localhost:5000/tkg/packages/core/kapp-controller@sha256:517a2c732f1af463d27d5ca395e5d0a740d3d3477fd6269fad7c669a3d359b54
+tkg-system                   | kapp-controller-5cbf5b8969-jk76t                  | localhost:5000/tkg/packages/core/kapp-controller@sha256:517a2c732f1af463d27d5ca395e5d0a740d3d3477fd6269fad7c669a3d359b54
+vmware-system-auth           | guest-cluster-auth-svc-bkz2z                      | localhost:5000/tkg/packages/core/guest-cluster-auth-service@sha256:825550236b90546ddc98ac3ef029cbe04c89026f3108bd4713f08526683878ce
+vmware-system-auth           | guest-cluster-auth-svc-c52r4                      | localhost:5000/tkg/packages/core/guest-cluster-auth-service@sha256:825550236b90546ddc98ac3ef029cbe04c89026f3108bd4713f08526683878ce
+vmware-system-auth           | guest-cluster-auth-svc-jz97h                      | localhost:5000/tkg/packages/core/guest-cluster-auth-service@sha256:825550236b90546ddc98ac3ef029cbe04c89026f3108bd4713f08526683878ce
+vmware-system-cloud-provider | guest-cluster-cloud-provider-ccdc7fd86-dpctl      | localhost:5000/tkg/packages/core/vsphere-cpi@sha256:8c1a26323628e500789bb01a8be193677802132c0c06f720a16dec5347838591
+vmware-system-csi            | vsphere-csi-controller-85998dcf6b-5hclj           | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:30c8305fa19cded20f762768afdd7bd22bdc58ad510d8882b56320941527ccbe
+vmware-system-csi            | vsphere-csi-controller-85998dcf6b-5hclj           | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+vmware-system-csi            | vsphere-csi-controller-85998dcf6b-5hclj           | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:973dd482f622f45b5e000fc12a6fceebf22fa2580ca0d1484c6988e508d4f48a
+vmware-system-csi            | vsphere-csi-controller-85998dcf6b-5hclj           | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+vmware-system-csi            | vsphere-csi-controller-85998dcf6b-5hclj           | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:63a5dae347a4e62b14cbe20d8178f7d820514df5bb11b1f48009cdcea3a216b2
+vmware-system-csi            | vsphere-csi-controller-85998dcf6b-5hclj           | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:f7af53b42b21b81f291aa58df4ad2f4d2d2dcf933757250840461316c977bcbe
+vmware-system-csi            | vsphere-csi-controller-85998dcf6b-5hclj           | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:29fc521a0512929c09b69daf7fcf8029e6f02c74c51990d950329184731f7595
+vmware-system-csi            | vsphere-csi-node-4cz4j                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+vmware-system-csi            | vsphere-csi-node-4cz4j                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+vmware-system-csi            | vsphere-csi-node-4cz4j                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+vmware-system-csi            | vsphere-csi-node-6kpxq                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+vmware-system-csi            | vsphere-csi-node-6kpxq                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+vmware-system-csi            | vsphere-csi-node-6kpxq                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+vmware-system-csi            | vsphere-csi-node-tnwj7                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+vmware-system-csi            | vsphere-csi-node-tnwj7                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+vmware-system-csi            | vsphere-csi-node-tnwj7                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+vmware-system-csi            | vsphere-csi-node-tzf24                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+vmware-system-csi            | vsphere-csi-node-tzf24                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+vmware-system-csi            | vsphere-csi-node-tzf24                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+vmware-system-csi            | vsphere-csi-node-w4p9h                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+vmware-system-csi            | vsphere-csi-node-w4p9h                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+vmware-system-csi            | vsphere-csi-node-w4p9h                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+vmware-system-csi            | vsphere-csi-node-wpwfx                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ac6a0e886aa3d6da9c46e7cf7d6d3aea27be2d11e752b4087b4a1d15ebae96bc
+vmware-system-csi            | vsphere-csi-node-wpwfx                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:ba73292d76f586700af37146aabaf5cf720670d8062fd6d375d3b7f1f2d2218c
+vmware-system-csi            | vsphere-csi-node-wpwfx                            | localhost:5000/tkg/packages/core/vsphere-pv-csi@sha256:cefcc91ddbb0a98e7ab5952b294bd9409732b6f719868fab1ed2cb709c05b290
+vmware-system-helm           | helm-controller-77d9f5975f-2vt6l                  | projects.packages.broadcom.com/vsphere/supervisor/vks-standard-packages/3.7.0-20260723/vks-addons@sha256:e23cb8c7b2f7156f6021ccfbdc6f8911baa55605587a725bea753cf6d7869497
+vmware-system-helm           | source-controller-7dd755d7b9-7rcm4                | projects.packages.broadcom.com/vsphere/supervisor/vks-standard-packages/3.7.0-20260723/vks-addons@sha256:af645846c8bf6e3830af1644f182ad2c2d9164cd4e9b45573fdc8ab29cc0c67f
+
+-------------------------------------------------------------------------------------------
+| FINAL RESULT - qa-cluster-02:qa-cluster-02                                              |
+-------------------------------------------------------------------------------------------
+Collection status  : Completed
+Report             : /Users/juliusn/Documents/Projects/00-vcf9-lab-9.1.1/43-create-vks-cluster/output-2026-10-22/18-document-vks-qa-cluster-02-2026-10-22-13-22-26/18-document-vks-qa-cluster-02-2026-10-22-13-22-26.txt
+Publication        : Complete only when the script exits 0.
+Started (GMT)      : 2026-10-22 13:22:26 GMT
+Ended (GMT)        : 2026-10-22 13:22:29 GMT
+Writes attempted   : 0

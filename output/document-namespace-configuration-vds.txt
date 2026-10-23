@@ -1,0 +1,726 @@
+
+-------------------------------------------------------------------------------------------
+| SUPERVISOR NAMESPACE CONFIGURATION - VLAN MODEL                                         |
+-------------------------------------------------------------------------------------------
+Script                     : 04-document-namespace-configuration-vds.sh
+Generated                  : 2026-10-22 13:22:56 GMT
+vCenter                    : mgmt-vcsa.platformlab.vcf
+Scope                      : All namespaces visible to the vCenter account
+Mode                       : Read-only discovery
+TLS verification           : disabled
+Transcript                 : /Users/juliusn/Documents/Projects/00-vcf9-lab-9.1.1/41-create-vsphere-namespaces/output-2026-10-22/04-document-namespace-configuration-vds-2026-10-22-13-22-56/04-document-namespace-configuration-vds.txt
+<none> means no value was returned. READ FAILED means the lookup failed.
+Configuration is discovered through vCenter APIs; no NSX connection is required.
+Namespaces                 : 7
+
+-------------------------------------------------------------------------------------------
+| 1. NAMESPACE IDENTITY AND PLACEMENT - dev-namespace                                     |
+-------------------------------------------------------------------------------------------
+FIELD                 VALUE
+Namespace             dev-namespace
+Description           Dev Namespace
+Configuration status  RUNNING
+Cluster ID            domain-c9
+Supervisor ID         23ca18ed-f62b-4d78-9724-e4811916c6bf
+Self-service          false
+
+-------------------------------------------------------------------------------------------
+| 2. STORAGE CONFIGURATION - dev-namespace                                                |
+-------------------------------------------------------------------------------------------
+POLICY                       POLICY-ID                             LIMIT-MiB  LIMIT-GiB
+vSAN Default Storage Policy  aa6d5a82-1c88-45da-85d3-3d74b91a5bad  512000     500
+
+-------------------------------------------------------------------------------------------
+| 3. VM CLASSES - dev-namespace                                                           |
+-------------------------------------------------------------------------------------------
+VM-CLASS
+best-effort-large
+best-effort-medium
+best-effort-small
+best-effort-xlarge
+
+-------------------------------------------------------------------------------------------
+| 4. CONTENT LIBRARY ASSOCIATIONS - dev-namespace                                         |
+-------------------------------------------------------------------------------------------
+SERVICE             LIBRARY              TYPE        LAST-SYNC                 LIBRARY-ID
+Kubernetes Service  vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+VM Service          vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+Kubernetes Service libraries are shared across namespaces on the Supervisor.
+
+-------------------------------------------------------------------------------------------
+| 5. ACCESS AND PERMISSIONS - dev-namespace                                               |
+-------------------------------------------------------------------------------------------
+SUBJECT-TYPE  SUBJECT  DOMAIN  ROLE
+
+-------------------------------------------------------------------------------------------
+| 6. RESOURCE QUOTAS AND RESERVATIONS - dev-namespace                                     |
+-------------------------------------------------------------------------------------------
+RESOURCE  LIMIT                   POD-RESERVATION  UNIT
+CPU       <not reported>          0                MHz
+Memory    <not reported>          1462             MiB
+Storage   per policy (section 2)  215543           MiB
+Reservations are requested resources, not measured utilization.
+
+-------------------------------------------------------------------------------------------
+| 7. KUBERNETES SERVICE LIBRARY ITEMS - dev-namespace                                     |
+-------------------------------------------------------------------------------------------
+
+Library: vkr-content-library
+ITEM                                                    TYPE  CACHED  SIZE-BYTES  SECURITY-COMPLIANT  CERTIFICATE
+ob-25653794-photon-5-amd64-v1.35.6---vmware.2-vkr.3     ovf   true    4694333919  true                VERIFIED
+ob-25653795-ubuntu-2204-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6838406637  true                VERIFIED
+ob-25653793-ubuntu-2404-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6849725421  true                VERIFIED
+
+Uncached on-demand items can be normal. Library metadata does not prove release readiness.
+
+-------------------------------------------------------------------------------------------
+| NETWORK CIDR and IP SUMMARY - Namespace: dev-namespace                                  |
+-------------------------------------------------------------------------------------------
+Network provider           : VSPHERE_NETWORK
+Supervisor                 : 23ca18ed-f62b-4d78-9724-e4811916c6bf
+Default workload network   : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+VLAN tag                   : Unavailable: vCenter Automation network APIs do not expose the DVPG VLAN tag.
+
+Supervisor network         : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+Configuration status       : ACTIVE
+Distributed portgroup      : vlan196-vks-workload
+Portgroup ID               : dvportgroup-180
+Backing type               : DISTRIBUTED_PORTGROUP
+Is default workload        : true
+Workload CIDR              : 192.168.196.0/24
+Ingress CIDRs              : 192.168.197.0/24
+Ingress status             : DERIVED
+Ingress VIP ranges         : 192.168.197.30 - 192.168.197.199 (170 addresses)
+Egress CIDRs               : 192.168.196.0/24
+Gateway                    : 192.168.196.1
+Subnet mask                : 255.255.255.0
+IP assignment              : STATICRANGE
+Network use                : WORKLOAD
+Shared address ranges      : 192.168.196.11 - 192.168.196.199 (189 addresses)
+Namespaces sharing network : svc-cci-ns-v65z2, dev-namespace, qa-namespace, svc-contour-ucnbf, svc-harbor-48i03, svc-tkg-efkhy, svc-velero-upkvx
+
+Scope: workload ranges and Foundation ingress ranges are shared, not namespace-exclusive allocations.
+Ingress CIDRs: matching Foundation frontend subnet(s) plus configured additional VIP subnets.
+Egress CIDRs: workload source subnet(s) before any upstream NAT; external translated addresses are not exposed.
+Assigned workload IPs and service VIPs are not returned by these vCenter namespace APIs.
+DHCP/NONE networks may have empty gateway, mask and ranges. No connectivity or DHCP lease checks are performed.
+
+-------------------------------------------------------------------------------------------
+| 1. NAMESPACE IDENTITY AND PLACEMENT - qa-namespace                                      |
+-------------------------------------------------------------------------------------------
+FIELD                 VALUE
+Namespace             qa-namespace
+Description           QA Namespace
+Configuration status  RUNNING
+Cluster ID            domain-c9
+Supervisor ID         23ca18ed-f62b-4d78-9724-e4811916c6bf
+Self-service          false
+
+-------------------------------------------------------------------------------------------
+| 2. STORAGE CONFIGURATION - qa-namespace                                                 |
+-------------------------------------------------------------------------------------------
+POLICY                       POLICY-ID                             LIMIT-MiB  LIMIT-GiB
+vSAN Default Storage Policy  aa6d5a82-1c88-45da-85d3-3d74b91a5bad  512000     500
+
+-------------------------------------------------------------------------------------------
+| 3. VM CLASSES - qa-namespace                                                            |
+-------------------------------------------------------------------------------------------
+VM-CLASS
+best-effort-large
+best-effort-medium
+best-effort-small
+best-effort-xlarge
+
+-------------------------------------------------------------------------------------------
+| 4. CONTENT LIBRARY ASSOCIATIONS - qa-namespace                                          |
+-------------------------------------------------------------------------------------------
+SERVICE             LIBRARY              TYPE        LAST-SYNC                 LIBRARY-ID
+Kubernetes Service  vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+VM Service          vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+Kubernetes Service libraries are shared across namespaces on the Supervisor.
+
+-------------------------------------------------------------------------------------------
+| 5. ACCESS AND PERMISSIONS - qa-namespace                                                |
+-------------------------------------------------------------------------------------------
+SUBJECT-TYPE  SUBJECT  DOMAIN  ROLE
+
+-------------------------------------------------------------------------------------------
+| 6. RESOURCE QUOTAS AND RESERVATIONS - qa-namespace                                      |
+-------------------------------------------------------------------------------------------
+RESOURCE  LIMIT                   POD-RESERVATION  UNIT
+CPU       <not reported>          0                MHz
+Memory    <not reported>          1622             MiB
+Storage   per policy (section 2)  215543           MiB
+Reservations are requested resources, not measured utilization.
+
+-------------------------------------------------------------------------------------------
+| 7. KUBERNETES SERVICE LIBRARY ITEMS - qa-namespace                                      |
+-------------------------------------------------------------------------------------------
+
+Library: vkr-content-library
+ITEM                                                    TYPE  CACHED  SIZE-BYTES  SECURITY-COMPLIANT  CERTIFICATE
+ob-25653794-photon-5-amd64-v1.35.6---vmware.2-vkr.3     ovf   true    4694333919  true                VERIFIED
+ob-25653795-ubuntu-2204-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6838406637  true                VERIFIED
+ob-25653793-ubuntu-2404-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6849725421  true                VERIFIED
+
+Uncached on-demand items can be normal. Library metadata does not prove release readiness.
+
+-------------------------------------------------------------------------------------------
+| NETWORK CIDR and IP SUMMARY - Namespace: qa-namespace                                   |
+-------------------------------------------------------------------------------------------
+Network provider           : VSPHERE_NETWORK
+Supervisor                 : 23ca18ed-f62b-4d78-9724-e4811916c6bf
+Default workload network   : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+VLAN tag                   : Unavailable: vCenter Automation network APIs do not expose the DVPG VLAN tag.
+
+Supervisor network         : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+Configuration status       : ACTIVE
+Distributed portgroup      : vlan196-vks-workload
+Portgroup ID               : dvportgroup-180
+Backing type               : DISTRIBUTED_PORTGROUP
+Is default workload        : true
+Workload CIDR              : 192.168.196.0/24
+Ingress CIDRs              : 192.168.197.0/24
+Ingress status             : DERIVED
+Ingress VIP ranges         : 192.168.197.30 - 192.168.197.199 (170 addresses)
+Egress CIDRs               : 192.168.196.0/24
+Gateway                    : 192.168.196.1
+Subnet mask                : 255.255.255.0
+IP assignment              : STATICRANGE
+Network use                : WORKLOAD
+Shared address ranges      : 192.168.196.11 - 192.168.196.199 (189 addresses)
+Namespaces sharing network : svc-cci-ns-v65z2, dev-namespace, qa-namespace, svc-contour-ucnbf, svc-harbor-48i03, svc-tkg-efkhy, svc-velero-upkvx
+
+Scope: workload ranges and Foundation ingress ranges are shared, not namespace-exclusive allocations.
+Ingress CIDRs: matching Foundation frontend subnet(s) plus configured additional VIP subnets.
+Egress CIDRs: workload source subnet(s) before any upstream NAT; external translated addresses are not exposed.
+Assigned workload IPs and service VIPs are not returned by these vCenter namespace APIs.
+DHCP/NONE networks may have empty gateway, mask and ranges. No connectivity or DHCP lease checks are performed.
+
+-------------------------------------------------------------------------------------------
+| 1. NAMESPACE IDENTITY AND PLACEMENT - svc-cci-ns-v65z2                                  |
+-------------------------------------------------------------------------------------------
+FIELD                 VALUE
+Namespace             svc-cci-ns-v65z2
+Description           <none>
+Configuration status  RUNNING
+Cluster ID            domain-c9
+Supervisor ID         23ca18ed-f62b-4d78-9724-e4811916c6bf
+Self-service          false
+
+-------------------------------------------------------------------------------------------
+| 2. STORAGE CONFIGURATION - svc-cci-ns-v65z2                                             |
+-------------------------------------------------------------------------------------------
+POLICY                                                          POLICY-ID                             LIMIT-MiB  LIMIT-GiB
+Management Storage Policy - Large                               cd8f7c94-3e11-67fc-17f5-4e96d91a5beb  unlimited  unlimited
+Management Storage Policy - Stretched Lite                      d109de24-c966-428f-8da2-d281e6671e35  unlimited  unlimited
+platformlab-cl01 - Optimal Datastore Default Policy - AutoRAID  e24284d2-c518-4e4d-86b5-7164fba3bde9  unlimited  unlimited
+VM Encryption Policy                                            4d5f673c-536f-11e6-beb8-9e71128cae77  unlimited  unlimited
+Management Storage policy - Encryption                          b1263970-8662-69e2-adc6-fa8ae01abecc  unlimited  unlimited
+Management Storage Policy - Single Node                         a9423670-7455-11e8-adc0-fa7ae01bbebc  unlimited  unlimited
+vSAN ESA Auto RAID Policy                                       d250b190-0b7d-4cee-b421-8a39884914d0  unlimited  unlimited
+Management Storage policy - Thin                                b6423670-8552-66e8-adc1-fa6ae01abeac  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID5                       8570bdee-9025-4a94-a0fc-07c9747de861  unlimited  unlimited
+Management Storage Policy - Stretched ESA                       c7c00fec-ff5d-4ebc-ab63-f4838c1b64ad  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID6                       501bad8b-f152-48d4-be5d-ead1f6268d5f  unlimited  unlimited
+vSAN Object Store Policy                                        d4ec1751-ce09-422a-8a12-bc6cd18ff679  unlimited  unlimited
+vSAN ESA Default Policy - RAID5                                 4b97756b-3c50-481a-a105-d6a7b1507f9a  unlimited  unlimited
+vSAN Default Storage Policy                                     aa6d5a82-1c88-45da-85d3-3d74b91a5bad  unlimited  unlimited
+Management Storage Policy - Regular                             bb7e6b13-2d99-46eb-96e4-3d85c91a5bde  unlimited  unlimited
+vSAN Stretched ESA Default Policy                               73182675-29d6-408f-9123-d4823e0dd746  unlimited  unlimited
+Management Storage Policy - Stretched                           f31f2442-8247-4517-87c2-8d69d7a6c696  unlimited  unlimited
+vSAN ESA Default Policy - RAID6                                 865b5d61-54ce-42b7-8827-1095bef6c470  unlimited  unlimited
+
+-------------------------------------------------------------------------------------------
+| 3. VM CLASSES - svc-cci-ns-v65z2                                                        |
+-------------------------------------------------------------------------------------------
+VM-CLASS
+
+-------------------------------------------------------------------------------------------
+| 4. CONTENT LIBRARY ASSOCIATIONS - svc-cci-ns-v65z2                                      |
+-------------------------------------------------------------------------------------------
+SERVICE             LIBRARY              TYPE        LAST-SYNC                 LIBRARY-ID
+Kubernetes Service  vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+Kubernetes Service libraries are shared across namespaces on the Supervisor.
+
+-------------------------------------------------------------------------------------------
+| 5. ACCESS AND PERMISSIONS - svc-cci-ns-v65z2                                            |
+-------------------------------------------------------------------------------------------
+SUBJECT-TYPE  SUBJECT  DOMAIN  ROLE
+
+-------------------------------------------------------------------------------------------
+| 6. RESOURCE QUOTAS AND RESERVATIONS - svc-cci-ns-v65z2                                  |
+-------------------------------------------------------------------------------------------
+RESOURCE  LIMIT                   POD-RESERVATION  UNIT
+CPU       <not reported>          249              MHz
+Memory    <not reported>          464              MiB
+Storage   per policy (section 2)  0                MiB
+Reservations are requested resources, not measured utilization.
+
+-------------------------------------------------------------------------------------------
+| 7. KUBERNETES SERVICE LIBRARY ITEMS - svc-cci-ns-v65z2                                  |
+-------------------------------------------------------------------------------------------
+
+Library: vkr-content-library
+ITEM                                                    TYPE  CACHED  SIZE-BYTES  SECURITY-COMPLIANT  CERTIFICATE
+ob-25653794-photon-5-amd64-v1.35.6---vmware.2-vkr.3     ovf   true    4694333919  true                VERIFIED
+ob-25653795-ubuntu-2204-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6838406637  true                VERIFIED
+ob-25653793-ubuntu-2404-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6849725421  true                VERIFIED
+
+Uncached on-demand items can be normal. Library metadata does not prove release readiness.
+
+-------------------------------------------------------------------------------------------
+| NETWORK CIDR and IP SUMMARY - Namespace: svc-cci-ns-v65z2                               |
+-------------------------------------------------------------------------------------------
+Network provider           : VSPHERE_NETWORK
+Supervisor                 : 23ca18ed-f62b-4d78-9724-e4811916c6bf
+Default workload network   : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+VLAN tag                   : Unavailable: vCenter Automation network APIs do not expose the DVPG VLAN tag.
+
+Supervisor network         : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+Configuration status       : ACTIVE
+Distributed portgroup      : vlan196-vks-workload
+Portgroup ID               : dvportgroup-180
+Backing type               : DISTRIBUTED_PORTGROUP
+Is default workload        : true
+Workload CIDR              : 192.168.196.0/24
+Ingress CIDRs              : 192.168.197.0/24
+Ingress status             : DERIVED
+Ingress VIP ranges         : 192.168.197.30 - 192.168.197.199 (170 addresses)
+Egress CIDRs               : 192.168.196.0/24
+Gateway                    : 192.168.196.1
+Subnet mask                : 255.255.255.0
+IP assignment              : STATICRANGE
+Network use                : WORKLOAD
+Shared address ranges      : 192.168.196.11 - 192.168.196.199 (189 addresses)
+Namespaces sharing network : svc-cci-ns-v65z2, dev-namespace, qa-namespace, svc-contour-ucnbf, svc-harbor-48i03, svc-tkg-efkhy, svc-velero-upkvx
+
+Scope: workload ranges and Foundation ingress ranges are shared, not namespace-exclusive allocations.
+Ingress CIDRs: matching Foundation frontend subnet(s) plus configured additional VIP subnets.
+Egress CIDRs: workload source subnet(s) before any upstream NAT; external translated addresses are not exposed.
+Assigned workload IPs and service VIPs are not returned by these vCenter namespace APIs.
+DHCP/NONE networks may have empty gateway, mask and ranges. No connectivity or DHCP lease checks are performed.
+
+-------------------------------------------------------------------------------------------
+| 1. NAMESPACE IDENTITY AND PLACEMENT - svc-contour-ucnbf                                 |
+-------------------------------------------------------------------------------------------
+FIELD                 VALUE
+Namespace             svc-contour-ucnbf
+Description           <none>
+Configuration status  RUNNING
+Cluster ID            domain-c9
+Supervisor ID         23ca18ed-f62b-4d78-9724-e4811916c6bf
+Self-service          false
+
+-------------------------------------------------------------------------------------------
+| 2. STORAGE CONFIGURATION - svc-contour-ucnbf                                            |
+-------------------------------------------------------------------------------------------
+POLICY                                                          POLICY-ID                             LIMIT-MiB  LIMIT-GiB
+Management Storage Policy - Large                               cd8f7c94-3e11-67fc-17f5-4e96d91a5beb  unlimited  unlimited
+Management Storage Policy - Stretched Lite                      d109de24-c966-428f-8da2-d281e6671e35  unlimited  unlimited
+platformlab-cl01 - Optimal Datastore Default Policy - AutoRAID  e24284d2-c518-4e4d-86b5-7164fba3bde9  unlimited  unlimited
+VM Encryption Policy                                            4d5f673c-536f-11e6-beb8-9e71128cae77  unlimited  unlimited
+Management Storage policy - Encryption                          b1263970-8662-69e2-adc6-fa8ae01abecc  unlimited  unlimited
+Management Storage Policy - Single Node                         a9423670-7455-11e8-adc0-fa7ae01bbebc  unlimited  unlimited
+vSAN ESA Auto RAID Policy                                       d250b190-0b7d-4cee-b421-8a39884914d0  unlimited  unlimited
+Management Storage policy - Thin                                b6423670-8552-66e8-adc1-fa6ae01abeac  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID5                       8570bdee-9025-4a94-a0fc-07c9747de861  unlimited  unlimited
+Management Storage Policy - Stretched ESA                       c7c00fec-ff5d-4ebc-ab63-f4838c1b64ad  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID6                       501bad8b-f152-48d4-be5d-ead1f6268d5f  unlimited  unlimited
+vSAN Object Store Policy                                        d4ec1751-ce09-422a-8a12-bc6cd18ff679  unlimited  unlimited
+vSAN ESA Default Policy - RAID5                                 4b97756b-3c50-481a-a105-d6a7b1507f9a  unlimited  unlimited
+vSAN Default Storage Policy                                     aa6d5a82-1c88-45da-85d3-3d74b91a5bad  unlimited  unlimited
+Management Storage Policy - Regular                             bb7e6b13-2d99-46eb-96e4-3d85c91a5bde  unlimited  unlimited
+vSAN Stretched ESA Default Policy                               73182675-29d6-408f-9123-d4823e0dd746  unlimited  unlimited
+Management Storage Policy - Stretched                           f31f2442-8247-4517-87c2-8d69d7a6c696  unlimited  unlimited
+vSAN ESA Default Policy - RAID6                                 865b5d61-54ce-42b7-8827-1095bef6c470  unlimited  unlimited
+
+-------------------------------------------------------------------------------------------
+| 3. VM CLASSES - svc-contour-ucnbf                                                       |
+-------------------------------------------------------------------------------------------
+VM-CLASS
+
+-------------------------------------------------------------------------------------------
+| 4. CONTENT LIBRARY ASSOCIATIONS - svc-contour-ucnbf                                     |
+-------------------------------------------------------------------------------------------
+SERVICE             LIBRARY              TYPE        LAST-SYNC                 LIBRARY-ID
+Kubernetes Service  vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+Kubernetes Service libraries are shared across namespaces on the Supervisor.
+
+-------------------------------------------------------------------------------------------
+| 5. ACCESS AND PERMISSIONS - svc-contour-ucnbf                                           |
+-------------------------------------------------------------------------------------------
+SUBJECT-TYPE  SUBJECT  DOMAIN  ROLE
+
+-------------------------------------------------------------------------------------------
+| 6. RESOURCE QUOTAS AND RESERVATIONS - svc-contour-ucnbf                                 |
+-------------------------------------------------------------------------------------------
+RESOURCE  LIMIT                   POD-RESERVATION  UNIT
+CPU       <not reported>          1326             MHz
+Memory    <not reported>          1886             MiB
+Storage   per policy (section 2)  0                MiB
+Reservations are requested resources, not measured utilization.
+
+-------------------------------------------------------------------------------------------
+| 7. KUBERNETES SERVICE LIBRARY ITEMS - svc-contour-ucnbf                                 |
+-------------------------------------------------------------------------------------------
+
+Library: vkr-content-library
+ITEM                                                    TYPE  CACHED  SIZE-BYTES  SECURITY-COMPLIANT  CERTIFICATE
+ob-25653794-photon-5-amd64-v1.35.6---vmware.2-vkr.3     ovf   true    4694333919  true                VERIFIED
+ob-25653795-ubuntu-2204-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6838406637  true                VERIFIED
+ob-25653793-ubuntu-2404-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6849725421  true                VERIFIED
+
+Uncached on-demand items can be normal. Library metadata does not prove release readiness.
+
+-------------------------------------------------------------------------------------------
+| NETWORK CIDR and IP SUMMARY - Namespace: svc-contour-ucnbf                              |
+-------------------------------------------------------------------------------------------
+Network provider           : VSPHERE_NETWORK
+Supervisor                 : 23ca18ed-f62b-4d78-9724-e4811916c6bf
+Default workload network   : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+VLAN tag                   : Unavailable: vCenter Automation network APIs do not expose the DVPG VLAN tag.
+
+Supervisor network         : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+Configuration status       : ACTIVE
+Distributed portgroup      : vlan196-vks-workload
+Portgroup ID               : dvportgroup-180
+Backing type               : DISTRIBUTED_PORTGROUP
+Is default workload        : true
+Workload CIDR              : 192.168.196.0/24
+Ingress CIDRs              : 192.168.197.0/24
+Ingress status             : DERIVED
+Ingress VIP ranges         : 192.168.197.30 - 192.168.197.199 (170 addresses)
+Egress CIDRs               : 192.168.196.0/24
+Gateway                    : 192.168.196.1
+Subnet mask                : 255.255.255.0
+IP assignment              : STATICRANGE
+Network use                : WORKLOAD
+Shared address ranges      : 192.168.196.11 - 192.168.196.199 (189 addresses)
+Namespaces sharing network : svc-cci-ns-v65z2, dev-namespace, qa-namespace, svc-contour-ucnbf, svc-harbor-48i03, svc-tkg-efkhy, svc-velero-upkvx
+
+Scope: workload ranges and Foundation ingress ranges are shared, not namespace-exclusive allocations.
+Ingress CIDRs: matching Foundation frontend subnet(s) plus configured additional VIP subnets.
+Egress CIDRs: workload source subnet(s) before any upstream NAT; external translated addresses are not exposed.
+Assigned workload IPs and service VIPs are not returned by these vCenter namespace APIs.
+DHCP/NONE networks may have empty gateway, mask and ranges. No connectivity or DHCP lease checks are performed.
+
+-------------------------------------------------------------------------------------------
+| 1. NAMESPACE IDENTITY AND PLACEMENT - svc-harbor-48i03                                  |
+-------------------------------------------------------------------------------------------
+FIELD                 VALUE
+Namespace             svc-harbor-48i03
+Description           <none>
+Configuration status  RUNNING
+Cluster ID            domain-c9
+Supervisor ID         23ca18ed-f62b-4d78-9724-e4811916c6bf
+Self-service          false
+
+-------------------------------------------------------------------------------------------
+| 2. STORAGE CONFIGURATION - svc-harbor-48i03                                             |
+-------------------------------------------------------------------------------------------
+POLICY                                                          POLICY-ID                             LIMIT-MiB  LIMIT-GiB
+Management Storage Policy - Large                               cd8f7c94-3e11-67fc-17f5-4e96d91a5beb  unlimited  unlimited
+Management Storage Policy - Stretched Lite                      d109de24-c966-428f-8da2-d281e6671e35  unlimited  unlimited
+platformlab-cl01 - Optimal Datastore Default Policy - AutoRAID  e24284d2-c518-4e4d-86b5-7164fba3bde9  unlimited  unlimited
+VM Encryption Policy                                            4d5f673c-536f-11e6-beb8-9e71128cae77  unlimited  unlimited
+Management Storage policy - Encryption                          b1263970-8662-69e2-adc6-fa8ae01abecc  unlimited  unlimited
+Management Storage Policy - Single Node                         a9423670-7455-11e8-adc0-fa7ae01bbebc  unlimited  unlimited
+vSAN ESA Auto RAID Policy                                       d250b190-0b7d-4cee-b421-8a39884914d0  unlimited  unlimited
+Management Storage policy - Thin                                b6423670-8552-66e8-adc1-fa6ae01abeac  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID5                       8570bdee-9025-4a94-a0fc-07c9747de861  unlimited  unlimited
+Management Storage Policy - Stretched ESA                       c7c00fec-ff5d-4ebc-ab63-f4838c1b64ad  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID6                       501bad8b-f152-48d4-be5d-ead1f6268d5f  unlimited  unlimited
+vSAN Object Store Policy                                        d4ec1751-ce09-422a-8a12-bc6cd18ff679  unlimited  unlimited
+vSAN ESA Default Policy - RAID5                                 4b97756b-3c50-481a-a105-d6a7b1507f9a  unlimited  unlimited
+vSAN Default Storage Policy                                     aa6d5a82-1c88-45da-85d3-3d74b91a5bad  unlimited  unlimited
+Management Storage Policy - Regular                             bb7e6b13-2d99-46eb-96e4-3d85c91a5bde  unlimited  unlimited
+vSAN Stretched ESA Default Policy                               73182675-29d6-408f-9123-d4823e0dd746  unlimited  unlimited
+Management Storage Policy - Stretched                           f31f2442-8247-4517-87c2-8d69d7a6c696  unlimited  unlimited
+vSAN ESA Default Policy - RAID6                                 865b5d61-54ce-42b7-8827-1095bef6c470  unlimited  unlimited
+
+-------------------------------------------------------------------------------------------
+| 3. VM CLASSES - svc-harbor-48i03                                                        |
+-------------------------------------------------------------------------------------------
+VM-CLASS
+
+-------------------------------------------------------------------------------------------
+| 4. CONTENT LIBRARY ASSOCIATIONS - svc-harbor-48i03                                      |
+-------------------------------------------------------------------------------------------
+SERVICE             LIBRARY              TYPE        LAST-SYNC                 LIBRARY-ID
+Kubernetes Service  vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+Kubernetes Service libraries are shared across namespaces on the Supervisor.
+
+-------------------------------------------------------------------------------------------
+| 5. ACCESS AND PERMISSIONS - svc-harbor-48i03                                            |
+-------------------------------------------------------------------------------------------
+SUBJECT-TYPE  SUBJECT  DOMAIN  ROLE
+
+-------------------------------------------------------------------------------------------
+| 6. RESOURCE QUOTAS AND RESERVATIONS - svc-harbor-48i03                                  |
+-------------------------------------------------------------------------------------------
+RESOURCE  LIMIT                   POD-RESERVATION  UNIT
+CPU       <not reported>          8979             MHz
+Memory    <not reported>          6074             MiB
+Storage   per policy (section 2)  18432            MiB
+Reservations are requested resources, not measured utilization.
+
+-------------------------------------------------------------------------------------------
+| 7. KUBERNETES SERVICE LIBRARY ITEMS - svc-harbor-48i03                                  |
+-------------------------------------------------------------------------------------------
+
+Library: vkr-content-library
+ITEM                                                    TYPE  CACHED  SIZE-BYTES  SECURITY-COMPLIANT  CERTIFICATE
+ob-25653794-photon-5-amd64-v1.35.6---vmware.2-vkr.3     ovf   true    4694333919  true                VERIFIED
+ob-25653795-ubuntu-2204-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6838406637  true                VERIFIED
+ob-25653793-ubuntu-2404-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6849725421  true                VERIFIED
+
+Uncached on-demand items can be normal. Library metadata does not prove release readiness.
+
+-------------------------------------------------------------------------------------------
+| NETWORK CIDR and IP SUMMARY - Namespace: svc-harbor-48i03                               |
+-------------------------------------------------------------------------------------------
+Network provider           : VSPHERE_NETWORK
+Supervisor                 : 23ca18ed-f62b-4d78-9724-e4811916c6bf
+Default workload network   : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+VLAN tag                   : Unavailable: vCenter Automation network APIs do not expose the DVPG VLAN tag.
+
+Supervisor network         : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+Configuration status       : ACTIVE
+Distributed portgroup      : vlan196-vks-workload
+Portgroup ID               : dvportgroup-180
+Backing type               : DISTRIBUTED_PORTGROUP
+Is default workload        : true
+Workload CIDR              : 192.168.196.0/24
+Ingress CIDRs              : 192.168.197.0/24
+Ingress status             : DERIVED
+Ingress VIP ranges         : 192.168.197.30 - 192.168.197.199 (170 addresses)
+Egress CIDRs               : 192.168.196.0/24
+Gateway                    : 192.168.196.1
+Subnet mask                : 255.255.255.0
+IP assignment              : STATICRANGE
+Network use                : WORKLOAD
+Shared address ranges      : 192.168.196.11 - 192.168.196.199 (189 addresses)
+Namespaces sharing network : svc-cci-ns-v65z2, dev-namespace, qa-namespace, svc-contour-ucnbf, svc-harbor-48i03, svc-tkg-efkhy, svc-velero-upkvx
+
+Scope: workload ranges and Foundation ingress ranges are shared, not namespace-exclusive allocations.
+Ingress CIDRs: matching Foundation frontend subnet(s) plus configured additional VIP subnets.
+Egress CIDRs: workload source subnet(s) before any upstream NAT; external translated addresses are not exposed.
+Assigned workload IPs and service VIPs are not returned by these vCenter namespace APIs.
+DHCP/NONE networks may have empty gateway, mask and ranges. No connectivity or DHCP lease checks are performed.
+
+-------------------------------------------------------------------------------------------
+| 1. NAMESPACE IDENTITY AND PLACEMENT - svc-tkg-efkhy                                     |
+-------------------------------------------------------------------------------------------
+FIELD                 VALUE
+Namespace             svc-tkg-efkhy
+Description           <none>
+Configuration status  RUNNING
+Cluster ID            domain-c9
+Supervisor ID         23ca18ed-f62b-4d78-9724-e4811916c6bf
+Self-service          false
+
+-------------------------------------------------------------------------------------------
+| 2. STORAGE CONFIGURATION - svc-tkg-efkhy                                                |
+-------------------------------------------------------------------------------------------
+POLICY                                                          POLICY-ID                             LIMIT-MiB  LIMIT-GiB
+Management Storage Policy - Large                               cd8f7c94-3e11-67fc-17f5-4e96d91a5beb  unlimited  unlimited
+Management Storage Policy - Stretched Lite                      d109de24-c966-428f-8da2-d281e6671e35  unlimited  unlimited
+platformlab-cl01 - Optimal Datastore Default Policy - AutoRAID  e24284d2-c518-4e4d-86b5-7164fba3bde9  unlimited  unlimited
+VM Encryption Policy                                            4d5f673c-536f-11e6-beb8-9e71128cae77  unlimited  unlimited
+Management Storage policy - Encryption                          b1263970-8662-69e2-adc6-fa8ae01abecc  unlimited  unlimited
+Management Storage Policy - Single Node                         a9423670-7455-11e8-adc0-fa7ae01bbebc  unlimited  unlimited
+vSAN ESA Auto RAID Policy                                       d250b190-0b7d-4cee-b421-8a39884914d0  unlimited  unlimited
+Management Storage policy - Thin                                b6423670-8552-66e8-adc1-fa6ae01abeac  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID5                       8570bdee-9025-4a94-a0fc-07c9747de861  unlimited  unlimited
+Management Storage Policy - Stretched ESA                       c7c00fec-ff5d-4ebc-ab63-f4838c1b64ad  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID6                       501bad8b-f152-48d4-be5d-ead1f6268d5f  unlimited  unlimited
+vSAN Object Store Policy                                        d4ec1751-ce09-422a-8a12-bc6cd18ff679  unlimited  unlimited
+vSAN ESA Default Policy - RAID5                                 4b97756b-3c50-481a-a105-d6a7b1507f9a  unlimited  unlimited
+vSAN Default Storage Policy                                     aa6d5a82-1c88-45da-85d3-3d74b91a5bad  unlimited  unlimited
+Management Storage Policy - Regular                             bb7e6b13-2d99-46eb-96e4-3d85c91a5bde  unlimited  unlimited
+vSAN Stretched ESA Default Policy                               73182675-29d6-408f-9123-d4823e0dd746  unlimited  unlimited
+Management Storage Policy - Stretched                           f31f2442-8247-4517-87c2-8d69d7a6c696  unlimited  unlimited
+vSAN ESA Default Policy - RAID6                                 865b5d61-54ce-42b7-8827-1095bef6c470  unlimited  unlimited
+
+-------------------------------------------------------------------------------------------
+| 3. VM CLASSES - svc-tkg-efkhy                                                           |
+-------------------------------------------------------------------------------------------
+VM-CLASS
+
+-------------------------------------------------------------------------------------------
+| 4. CONTENT LIBRARY ASSOCIATIONS - svc-tkg-efkhy                                         |
+-------------------------------------------------------------------------------------------
+SERVICE             LIBRARY              TYPE        LAST-SYNC                 LIBRARY-ID
+Kubernetes Service  vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+Kubernetes Service libraries are shared across namespaces on the Supervisor.
+
+-------------------------------------------------------------------------------------------
+| 5. ACCESS AND PERMISSIONS - svc-tkg-efkhy                                               |
+-------------------------------------------------------------------------------------------
+SUBJECT-TYPE  SUBJECT  DOMAIN  ROLE
+
+-------------------------------------------------------------------------------------------
+| 6. RESOURCE QUOTAS AND RESERVATIONS - svc-tkg-efkhy                                     |
+-------------------------------------------------------------------------------------------
+RESOURCE  LIMIT                   POD-RESERVATION  UNIT
+CPU       <not reported>          0                MHz
+Memory    <not reported>          0                MiB
+Storage   per policy (section 2)  0                MiB
+Reservations are requested resources, not measured utilization.
+
+-------------------------------------------------------------------------------------------
+| 7. KUBERNETES SERVICE LIBRARY ITEMS - svc-tkg-efkhy                                     |
+-------------------------------------------------------------------------------------------
+
+Library: vkr-content-library
+ITEM                                                    TYPE  CACHED  SIZE-BYTES  SECURITY-COMPLIANT  CERTIFICATE
+ob-25653794-photon-5-amd64-v1.35.6---vmware.2-vkr.3     ovf   true    4694333919  true                VERIFIED
+ob-25653795-ubuntu-2204-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6838406637  true                VERIFIED
+ob-25653793-ubuntu-2404-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6849725421  true                VERIFIED
+
+Uncached on-demand items can be normal. Library metadata does not prove release readiness.
+
+-------------------------------------------------------------------------------------------
+| NETWORK CIDR and IP SUMMARY - Namespace: svc-tkg-efkhy                                  |
+-------------------------------------------------------------------------------------------
+Network provider           : VSPHERE_NETWORK
+Supervisor                 : 23ca18ed-f62b-4d78-9724-e4811916c6bf
+Default workload network   : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+VLAN tag                   : Unavailable: vCenter Automation network APIs do not expose the DVPG VLAN tag.
+
+Supervisor network         : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+Configuration status       : ACTIVE
+Distributed portgroup      : vlan196-vks-workload
+Portgroup ID               : dvportgroup-180
+Backing type               : DISTRIBUTED_PORTGROUP
+Is default workload        : true
+Workload CIDR              : 192.168.196.0/24
+Ingress CIDRs              : 192.168.197.0/24
+Ingress status             : DERIVED
+Ingress VIP ranges         : 192.168.197.30 - 192.168.197.199 (170 addresses)
+Egress CIDRs               : 192.168.196.0/24
+Gateway                    : 192.168.196.1
+Subnet mask                : 255.255.255.0
+IP assignment              : STATICRANGE
+Network use                : WORKLOAD
+Shared address ranges      : 192.168.196.11 - 192.168.196.199 (189 addresses)
+Namespaces sharing network : svc-cci-ns-v65z2, dev-namespace, qa-namespace, svc-contour-ucnbf, svc-harbor-48i03, svc-tkg-efkhy, svc-velero-upkvx
+
+Scope: workload ranges and Foundation ingress ranges are shared, not namespace-exclusive allocations.
+Ingress CIDRs: matching Foundation frontend subnet(s) plus configured additional VIP subnets.
+Egress CIDRs: workload source subnet(s) before any upstream NAT; external translated addresses are not exposed.
+Assigned workload IPs and service VIPs are not returned by these vCenter namespace APIs.
+DHCP/NONE networks may have empty gateway, mask and ranges. No connectivity or DHCP lease checks are performed.
+
+-------------------------------------------------------------------------------------------
+| 1. NAMESPACE IDENTITY AND PLACEMENT - svc-velero-upkvx                                  |
+-------------------------------------------------------------------------------------------
+FIELD                 VALUE
+Namespace             svc-velero-upkvx
+Description           <none>
+Configuration status  RUNNING
+Cluster ID            domain-c9
+Supervisor ID         23ca18ed-f62b-4d78-9724-e4811916c6bf
+Self-service          false
+
+-------------------------------------------------------------------------------------------
+| 2. STORAGE CONFIGURATION - svc-velero-upkvx                                             |
+-------------------------------------------------------------------------------------------
+POLICY                                                          POLICY-ID                             LIMIT-MiB  LIMIT-GiB
+Management Storage Policy - Large                               cd8f7c94-3e11-67fc-17f5-4e96d91a5beb  unlimited  unlimited
+Management Storage Policy - Stretched Lite                      d109de24-c966-428f-8da2-d281e6671e35  unlimited  unlimited
+platformlab-cl01 - Optimal Datastore Default Policy - AutoRAID  e24284d2-c518-4e4d-86b5-7164fba3bde9  unlimited  unlimited
+VM Encryption Policy                                            4d5f673c-536f-11e6-beb8-9e71128cae77  unlimited  unlimited
+Management Storage policy - Encryption                          b1263970-8662-69e2-adc6-fa8ae01abecc  unlimited  unlimited
+Management Storage Policy - Single Node                         a9423670-7455-11e8-adc0-fa7ae01bbebc  unlimited  unlimited
+vSAN ESA Auto RAID Policy                                       d250b190-0b7d-4cee-b421-8a39884914d0  unlimited  unlimited
+Management Storage policy - Thin                                b6423670-8552-66e8-adc1-fa6ae01abeac  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID5                       8570bdee-9025-4a94-a0fc-07c9747de861  unlimited  unlimited
+Management Storage Policy - Stretched ESA                       c7c00fec-ff5d-4ebc-ab63-f4838c1b64ad  unlimited  unlimited
+vSAN Stretched ESA Default Policy - RAID6                       501bad8b-f152-48d4-be5d-ead1f6268d5f  unlimited  unlimited
+vSAN Object Store Policy                                        d4ec1751-ce09-422a-8a12-bc6cd18ff679  unlimited  unlimited
+vSAN ESA Default Policy - RAID5                                 4b97756b-3c50-481a-a105-d6a7b1507f9a  unlimited  unlimited
+vSAN Default Storage Policy                                     aa6d5a82-1c88-45da-85d3-3d74b91a5bad  unlimited  unlimited
+Management Storage Policy - Regular                             bb7e6b13-2d99-46eb-96e4-3d85c91a5bde  unlimited  unlimited
+vSAN Stretched ESA Default Policy                               73182675-29d6-408f-9123-d4823e0dd746  unlimited  unlimited
+Management Storage Policy - Stretched                           f31f2442-8247-4517-87c2-8d69d7a6c696  unlimited  unlimited
+vSAN ESA Default Policy - RAID6                                 865b5d61-54ce-42b7-8827-1095bef6c470  unlimited  unlimited
+
+-------------------------------------------------------------------------------------------
+| 3. VM CLASSES - svc-velero-upkvx                                                        |
+-------------------------------------------------------------------------------------------
+VM-CLASS
+
+-------------------------------------------------------------------------------------------
+| 4. CONTENT LIBRARY ASSOCIATIONS - svc-velero-upkvx                                      |
+-------------------------------------------------------------------------------------------
+SERVICE             LIBRARY              TYPE        LAST-SYNC                 LIBRARY-ID
+Kubernetes Service  vkr-content-library  SUBSCRIBED  2026-10-22T07:00:00.394Z  757007a7-d8d7-4207-9912-3e6462eb88a8
+Kubernetes Service libraries are shared across namespaces on the Supervisor.
+
+-------------------------------------------------------------------------------------------
+| 5. ACCESS AND PERMISSIONS - svc-velero-upkvx                                            |
+-------------------------------------------------------------------------------------------
+SUBJECT-TYPE  SUBJECT  DOMAIN  ROLE
+
+-------------------------------------------------------------------------------------------
+| 6. RESOURCE QUOTAS AND RESERVATIONS - svc-velero-upkvx                                  |
+-------------------------------------------------------------------------------------------
+RESOURCE  LIMIT                   POD-RESERVATION  UNIT
+CPU       <not reported>          0                MHz
+Memory    <not reported>          0                MiB
+Storage   per policy (section 2)  0                MiB
+Reservations are requested resources, not measured utilization.
+
+-------------------------------------------------------------------------------------------
+| 7. KUBERNETES SERVICE LIBRARY ITEMS - svc-velero-upkvx                                  |
+-------------------------------------------------------------------------------------------
+
+Library: vkr-content-library
+ITEM                                                    TYPE  CACHED  SIZE-BYTES  SECURITY-COMPLIANT  CERTIFICATE
+ob-25653794-photon-5-amd64-v1.35.6---vmware.2-vkr.3     ovf   true    4694333919  true                VERIFIED
+ob-25653795-ubuntu-2204-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6838406637  true                VERIFIED
+ob-25653793-ubuntu-2404-amd64-v1.35.6---vmware.2-vkr.3  ovf   true    6849725421  true                VERIFIED
+
+Uncached on-demand items can be normal. Library metadata does not prove release readiness.
+
+-------------------------------------------------------------------------------------------
+| NETWORK CIDR and IP SUMMARY - Namespace: svc-velero-upkvx                               |
+-------------------------------------------------------------------------------------------
+Network provider           : VSPHERE_NETWORK
+Supervisor                 : 23ca18ed-f62b-4d78-9724-e4811916c6bf
+Default workload network   : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+VLAN tag                   : Unavailable: vCenter Automation network APIs do not expose the DVPG VLAN tag.
+
+Supervisor network         : workload-a7162ec6-cc47-11f1-b117-000c2961c646
+Configuration status       : ACTIVE
+Distributed portgroup      : vlan196-vks-workload
+Portgroup ID               : dvportgroup-180
+Backing type               : DISTRIBUTED_PORTGROUP
+Is default workload        : true
+Workload CIDR              : 192.168.196.0/24
+Ingress CIDRs              : 192.168.197.0/24
+Ingress status             : DERIVED
+Ingress VIP ranges         : 192.168.197.30 - 192.168.197.199 (170 addresses)
+Egress CIDRs               : 192.168.196.0/24
+Gateway                    : 192.168.196.1
+Subnet mask                : 255.255.255.0
+IP assignment              : STATICRANGE
+Network use                : WORKLOAD
+Shared address ranges      : 192.168.196.11 - 192.168.196.199 (189 addresses)
+Namespaces sharing network : svc-cci-ns-v65z2, dev-namespace, qa-namespace, svc-contour-ucnbf, svc-harbor-48i03, svc-tkg-efkhy, svc-velero-upkvx
+
+Scope: workload ranges and Foundation ingress ranges are shared, not namespace-exclusive allocations.
+Ingress CIDRs: matching Foundation frontend subnet(s) plus configured additional VIP subnets.
+Egress CIDRs: workload source subnet(s) before any upstream NAT; external translated addresses are not exposed.
+Assigned workload IPs and service VIPs are not returned by these vCenter namespace APIs.
+DHCP/NONE networks may have empty gateway, mask and ranges. No connectivity or DHCP lease checks are performed.
+
+-------------------------------------------------------------------------------------------
+| FINAL RESULT                                                                            |
+-------------------------------------------------------------------------------------------
+Status                     : COMPLETED
+Details                    : All requested API reads completed. Artifacts publish after cleanup succeeds.
+Transcript                 : /Users/juliusn/Documents/Projects/00-vcf9-lab-9.1.1/41-create-vsphere-namespaces/output-2026-10-22/04-document-namespace-configuration-vds-2026-10-22-13-22-56/04-document-namespace-configuration-vds.txt
+Network inventory          : /Users/juliusn/Documents/Projects/00-vcf9-lab-9.1.1/41-create-vsphere-namespaces/output-2026-10-22/04-document-namespace-configuration-vds-2026-10-22-13-22-56/04-document-namespace-configuration-vds.json

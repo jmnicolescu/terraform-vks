@@ -1,0 +1,895 @@
+% tterraform  init
+Initializing the backend...
+
+Initializing modules...
+
+Initializing provider plugins...
+- Reusing previous version of mastercard/restapi from the dependency lock file
+- Reusing previous version of magodo/restful from the dependency lock file
+- Reusing previous version of vmware/vsphere from the dependency lock file
+- Using previously-installed vmware/vsphere v2.17.1
+- Using previously-installed mastercard/restapi v2.0.1
+- Using previously-installed magodo/restful v0.25.2
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+
+% tterraform  plan
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 4s
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_datacenter.target: Reading...
+module.vsphere_namespace.data.vsphere_datacenter.target: Read complete after 0s [id=datacenter-3]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 0s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Read complete after 0s [id=domain-c9]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 0s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.restapi_object.namespace will be created
+  + resource "restapi_object" "namespace" {
+      + api_data                  = (known after apply)
+      + api_response              = (known after apply)
+      + create_method             = "POST"
+      + create_response           = (known after apply)
+      + data                      = jsonencode(
+            {
+              + cluster         = "domain-c9"
+              + description     = "Dev Namespace"
+              + namespace       = "dev-namespace"
+              + storage_specs   = [
+                  + {
+                      + limit  = 512000
+                      + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              + vm_service_spec = {
+                  + content_libraries = [
+                      + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  + vm_classes        = [
+                      + "best-effort-large",
+                      + "best-effort-medium",
+                      + "best-effort-small",
+                      + "best-effort-xlarge",
+                    ]
+                }
+            }
+        )
+      + destroy_method            = "DELETE"
+      + force_new                 = [
+          + "namespace",
+          + "cluster",
+        ]
+      + id                        = (known after apply)
+      + id_attribute              = "namespace"
+      + ignore_all_server_changes = false
+      + object_id                 = "dev-namespace"
+      + path                      = "/api/vcenter/namespaces/instances"
+      + read_method               = "GET"
+      + update_data               = jsonencode(
+            {
+              + description     = "Dev Namespace"
+              + storage_specs   = [
+                  + {
+                      + limit  = 512000
+                      + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              + vm_service_spec = {
+                  + content_libraries = [
+                      + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  + vm_classes        = [
+                      + "best-effort-large",
+                      + "best-effort-medium",
+                      + "best-effort-small",
+                      + "best-effort-xlarge",
+                    ]
+                }
+            }
+        )
+      + update_method             = "PATCH"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + config_status  = (known after apply)
+  + create_spec    = {
+      + cluster         = "domain-c9"
+      + description     = "Dev Namespace"
+      + namespace       = "dev-namespace"
+      + storage_specs   = [
+          + {
+              + limit  = 512000
+              + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+            },
+        ]
+      + vm_service_spec = {
+          + content_libraries = [
+              + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ]
+          + vm_classes        = [
+              + "best-effort-large",
+              + "best-effort-medium",
+              + "best-effort-small",
+              + "best-effort-xlarge",
+            ]
+        }
+    }
+  + namespace_name = (known after apply)
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+
+
+% terraform apply
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.data.vsphere_datacenter.target: Reading...
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_datacenter.target: Read complete after 0s [id=datacenter-3]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 0s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Read complete after 0s [id=domain-c9]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 1s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.restapi_object.namespace will be created
+  + resource "restapi_object" "namespace" {
+      + api_data                  = (known after apply)
+      + api_response              = (known after apply)
+      + create_method             = "POST"
+      + create_response           = (known after apply)
+      + data                      = jsonencode(
+            {
+              + cluster         = "domain-c9"
+              + description     = "Dev Namespace"
+              + namespace       = "dev-namespace"
+              + storage_specs   = [
+                  + {
+                      + limit  = 512000
+                      + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              + vm_service_spec = {
+                  + content_libraries = [
+                      + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  + vm_classes        = [
+                      + "best-effort-large",
+                      + "best-effort-medium",
+                      + "best-effort-small",
+                      + "best-effort-xlarge",
+                    ]
+                }
+            }
+        )
+      + destroy_method            = "DELETE"
+      + force_new                 = [
+          + "namespace",
+          + "cluster",
+        ]
+      + id                        = (known after apply)
+      + id_attribute              = "namespace"
+      + ignore_all_server_changes = false
+      + object_id                 = "dev-namespace"
+      + path                      = "/api/vcenter/namespaces/instances"
+      + read_method               = "GET"
+      + update_data               = jsonencode(
+            {
+              + description     = "Dev Namespace"
+              + storage_specs   = [
+                  + {
+                      + limit  = 512000
+                      + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              + vm_service_spec = {
+                  + content_libraries = [
+                      + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  + vm_classes        = [
+                      + "best-effort-large",
+                      + "best-effort-medium",
+                      + "best-effort-small",
+                      + "best-effort-xlarge",
+                    ]
+                }
+            }
+        )
+      + update_method             = "PATCH"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + config_status  = (known after apply)
+  + create_spec    = {
+      + cluster         = "domain-c9"
+      + description     = "Dev Namespace"
+      + namespace       = "dev-namespace"
+      + storage_specs   = [
+          + {
+              + limit  = 512000
+              + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+            },
+        ]
+      + vm_service_spec = {
+          + content_libraries = [
+              + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ]
+          + vm_classes        = [
+              + "best-effort-large",
+              + "best-effort-medium",
+              + "best-effort-small",
+              + "best-effort-xlarge",
+            ]
+        }
+    }
+  + namespace_name = (known after apply)
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.restapi_object.namespace: Creating...
+module.vsphere_namespace.restapi_object.namespace: Creation complete after 5s [id=dev-namespace]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+config_status = "CONFIGURING"
+create_spec = {
+  "cluster" = "domain-c9"
+  "description" = "Dev Namespace"
+  "namespace" = "dev-namespace"
+  "storage_specs" = [
+    {
+      "limit" = 512000
+      "policy" = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+    },
+  ]
+  "vm_service_spec" = {
+    "content_libraries" = [
+      "757007a7-d8d7-4207-9912-3e6462eb88a8",
+    ]
+    "vm_classes" = tolist([
+      "best-effort-large",
+      "best-effort-medium",
+      "best-effort-small",
+      "best-effort-xlarge",
+    ])
+  }
+}
+namespace_name = "dev-namespace"
+
+
+% terraform plan -destroy
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_datacenter.target: Reading...
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_datacenter.target: Read complete after 0s [id=datacenter-3]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 0s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Read complete after 0s [id=domain-c9]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 0s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+module.vsphere_namespace.restapi_object.namespace: Refreshing state... [id=dev-namespace]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 1s
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.restapi_object.namespace will be destroyed
+  - resource "restapi_object" "namespace" {
+      - api_data                  = {
+          - "access_list"            = jsonencode([])
+          - "cluster"                = "domain-c9"
+          - "config_status"          = "RUNNING"
+          - "description"            = "Dev Namespace"
+          - "messages"               = jsonencode([])
+          - "networks"               = "[workload-a7162ec6-cc47-11f1-b117-000c2961c646]"
+          - "self_service_namespace" = "false"
+          - "stats"                  = "map[cpu_used:0 memory_used:0 storage_used:0]"
+          - "storage_specs"          = "[map[limit:512000 policy:aa6d5a82-1c88-45da-85d3-3d74b91a5bad]]"
+          - "vm_service_spec"        = "map[content_libraries:[757007a7-d8d7-4207-9912-3e6462eb88a8] vm_classes:[best-effort-large best-effort-medium best-effort-small best-effort-xlarge]]"
+        } -> null
+      - api_response              = jsonencode(
+            {
+              - access_list            = []
+              - cluster                = "domain-c9"
+              - config_status          = "RUNNING"
+              - description            = "Dev Namespace"
+              - messages               = []
+              - networks               = [
+                  - "workload-a7162ec6-cc47-11f1-b117-000c2961c646",
+                ]
+              - self_service_namespace = false
+              - stats                  = {
+                  - cpu_used     = 0
+                  - memory_used  = 0
+                  - storage_used = 0
+                }
+              - storage_specs          = [
+                  - {
+                      - limit  = 512000
+                      - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              - vm_service_spec        = {
+                  - content_libraries = [
+                      - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  - vm_classes        = [
+                      - "best-effort-large",
+                      - "best-effort-medium",
+                      - "best-effort-small",
+                      - "best-effort-xlarge",
+                    ]
+                }
+            }
+        ) -> null
+      - create_method             = "POST" -> null
+      - create_response           = jsonencode(
+            {
+              - access_list            = []
+              - cluster                = "domain-c9"
+              - config_status          = "CONFIGURING"
+              - description            = "Dev Namespace"
+              - messages               = []
+              - networks               = [
+                  - "workload-a7162ec6-cc47-11f1-b117-000c2961c646",
+                ]
+              - self_service_namespace = false
+              - stats                  = {
+                  - cpu_used     = 0
+                  - memory_used  = 0
+                  - storage_used = 0
+                }
+              - storage_specs          = [
+                  - {
+                      - limit  = 512000
+                      - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              - vm_service_spec        = {
+                  - content_libraries = [
+                      - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  - vm_classes        = [
+                      - "best-effort-large",
+                      - "best-effort-medium",
+                      - "best-effort-small",
+                      - "best-effort-xlarge",
+                    ]
+                }
+            }
+        ) -> null
+      - data                      = jsonencode(
+            {
+              - access_list            = []
+              - cluster                = "domain-c9"
+              - config_status          = "RUNNING"
+              - description            = "Dev Namespace"
+              - messages               = []
+              - namespace              = null
+              - networks               = [
+                  - "workload-a7162ec6-cc47-11f1-b117-000c2961c646",
+                ]
+              - self_service_namespace = false
+              - stats                  = {
+                  - cpu_used     = 0
+                  - memory_used  = 0
+                  - storage_used = 0
+                }
+              - storage_specs          = [
+                  - {
+                      - limit  = 512000
+                      - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              - vm_service_spec        = {
+                  - content_libraries = [
+                      - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  - vm_classes        = [
+                      - "best-effort-large",
+                      - "best-effort-medium",
+                      - "best-effort-small",
+                      - "best-effort-xlarge",
+                    ]
+                }
+            }
+        ) -> null
+      - destroy_method            = "DELETE" -> null
+      - force_new                 = [
+          - "namespace",
+          - "cluster",
+        ] -> null
+      - id                        = "dev-namespace" -> null
+      - id_attribute              = "namespace" -> null
+      - ignore_all_server_changes = false -> null
+      - object_id                 = "dev-namespace" -> null
+      - path                      = "/api/vcenter/namespaces/instances" -> null
+      - read_method               = "GET" -> null
+      - update_data               = jsonencode(
+            {
+              - description     = "Dev Namespace"
+              - storage_specs   = [
+                  - {
+                      - limit  = 512000
+                      - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              - vm_service_spec = {
+                  - content_libraries = [
+                      - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  - vm_classes        = [
+                      - "best-effort-large",
+                      - "best-effort-medium",
+                      - "best-effort-small",
+                      - "best-effort-xlarge",
+                    ]
+                }
+            }
+        ) -> null
+      - update_method             = "PATCH" -> null
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+  - config_status  = "RUNNING" -> null
+  - create_spec    = {
+      - cluster         = "domain-c9"
+      - description     = "Dev Namespace"
+      - namespace       = "dev-namespace"
+      - storage_specs   = [
+          - {
+              - limit  = 512000
+              - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+            },
+        ]
+      - vm_service_spec = {
+          - content_libraries = [
+              - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ]
+          - vm_classes        = [
+              - "best-effort-large",
+              - "best-effort-medium",
+              - "best-effort-small",
+              - "best-effort-xlarge",
+            ]
+        }
+    } -> null
+  - namespace_name = "dev-namespace" -> null
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+
+
+% tterraform  destroy
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.data.vsphere_datacenter.target: Reading...
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_datacenter.target: Read complete after 0s [id=datacenter-3]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 1s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Read complete after 0s [id=domain-c9]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 1s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+module.vsphere_namespace.restapi_object.namespace: Refreshing state... [id=dev-namespace]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.restapi_object.namespace will be destroyed
+  - resource "restapi_object" "namespace" {
+      - api_data                  = {
+          - "access_list"            = jsonencode([])
+          - "cluster"                = "domain-c9"
+          - "config_status"          = "RUNNING"
+          - "description"            = "Dev Namespace"
+          - "messages"               = jsonencode([])
+          - "networks"               = "[workload-a7162ec6-cc47-11f1-b117-000c2961c646]"
+          - "self_service_namespace" = "false"
+          - "stats"                  = "map[cpu_used:0 memory_used:0 storage_used:0]"
+          - "storage_specs"          = "[map[limit:512000 policy:aa6d5a82-1c88-45da-85d3-3d74b91a5bad]]"
+          - "vm_service_spec"        = "map[content_libraries:[757007a7-d8d7-4207-9912-3e6462eb88a8] vm_classes:[best-effort-large best-effort-medium best-effort-small best-effort-xlarge]]"
+        } -> null
+      - api_response              = jsonencode(
+            {
+              - access_list            = []
+              - cluster                = "domain-c9"
+              - config_status          = "RUNNING"
+              - description            = "Dev Namespace"
+              - messages               = []
+              - networks               = [
+                  - "workload-a7162ec6-cc47-11f1-b117-000c2961c646",
+                ]
+              - self_service_namespace = false
+              - stats                  = {
+                  - cpu_used     = 0
+                  - memory_used  = 0
+                  - storage_used = 0
+                }
+              - storage_specs          = [
+                  - {
+                      - limit  = 512000
+                      - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              - vm_service_spec        = {
+                  - content_libraries = [
+                      - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  - vm_classes        = [
+                      - "best-effort-large",
+                      - "best-effort-medium",
+                      - "best-effort-small",
+                      - "best-effort-xlarge",
+                    ]
+                }
+            }
+        ) -> null
+      - create_method             = "POST" -> null
+      - create_response           = jsonencode(
+            {
+              - access_list            = []
+              - cluster                = "domain-c9"
+              - config_status          = "CONFIGURING"
+              - description            = "Dev Namespace"
+              - messages               = []
+              - networks               = [
+                  - "workload-a7162ec6-cc47-11f1-b117-000c2961c646",
+                ]
+              - self_service_namespace = false
+              - stats                  = {
+                  - cpu_used     = 0
+                  - memory_used  = 0
+                  - storage_used = 0
+                }
+              - storage_specs          = [
+                  - {
+                      - limit  = 512000
+                      - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              - vm_service_spec        = {
+                  - content_libraries = [
+                      - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  - vm_classes        = [
+                      - "best-effort-large",
+                      - "best-effort-medium",
+                      - "best-effort-small",
+                      - "best-effort-xlarge",
+                    ]
+                }
+            }
+        ) -> null
+      - data                      = jsonencode(
+            {
+              - access_list            = []
+              - cluster                = "domain-c9"
+              - config_status          = "RUNNING"
+              - description            = "Dev Namespace"
+              - messages               = []
+              - namespace              = null
+              - networks               = [
+                  - "workload-a7162ec6-cc47-11f1-b117-000c2961c646",
+                ]
+              - self_service_namespace = false
+              - stats                  = {
+                  - cpu_used     = 0
+                  - memory_used  = 0
+                  - storage_used = 0
+                }
+              - storage_specs          = [
+                  - {
+                      - limit  = 512000
+                      - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              - vm_service_spec        = {
+                  - content_libraries = [
+                      - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  - vm_classes        = [
+                      - "best-effort-large",
+                      - "best-effort-medium",
+                      - "best-effort-small",
+                      - "best-effort-xlarge",
+                    ]
+                }
+            }
+        ) -> null
+      - destroy_method            = "DELETE" -> null
+      - force_new                 = [
+          - "namespace",
+          - "cluster",
+        ] -> null
+      - id                        = "dev-namespace" -> null
+      - id_attribute              = "namespace" -> null
+      - ignore_all_server_changes = false -> null
+      - object_id                 = "dev-namespace" -> null
+      - path                      = "/api/vcenter/namespaces/instances" -> null
+      - read_method               = "GET" -> null
+      - update_data               = jsonencode(
+            {
+              - description     = "Dev Namespace"
+              - storage_specs   = [
+                  - {
+                      - limit  = 512000
+                      - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              - vm_service_spec = {
+                  - content_libraries = [
+                      - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  - vm_classes        = [
+                      - "best-effort-large",
+                      - "best-effort-medium",
+                      - "best-effort-small",
+                      - "best-effort-xlarge",
+                    ]
+                }
+            }
+        ) -> null
+      - update_method             = "PATCH" -> null
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+  - config_status  = "RUNNING" -> null
+  - create_spec    = {
+      - cluster         = "domain-c9"
+      - description     = "Dev Namespace"
+      - namespace       = "dev-namespace"
+      - storage_specs   = [
+          - {
+              - limit  = 512000
+              - policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+            },
+        ]
+      - vm_service_spec = {
+          - content_libraries = [
+              - "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ]
+          - vm_classes        = [
+              - "best-effort-large",
+              - "best-effort-medium",
+              - "best-effort-small",
+              - "best-effort-xlarge",
+            ]
+        }
+    } -> null
+  - namespace_name = "dev-namespace" -> null
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.restapi_object.namespace: Destroying... [id=dev-namespace]
+module.vsphere_namespace.restapi_object.namespace: Destruction complete after 0s
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Destroy complete! Resources: 1 destroyed.
+
+
+% terraform plan -out=namespace.tfplan
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.data.vsphere_datacenter.target: Reading...
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Reading...
+module.vsphere_namespace.data.vsphere_datacenter.target: Read complete after 0s [id=datacenter-3]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Reading...
+module.vsphere_namespace.data.vsphere_storage_policy.namespace["vSAN Default Storage Policy"]: Read complete after 0s [id=aa6d5a82-1c88-45da-85d3-3d74b91a5bad]
+module.vsphere_namespace.data.vsphere_compute_cluster.target: Read complete after 0s [id=domain-c9]
+module.vsphere_namespace.data.vsphere_content_library.namespace["vkr-content-library"]: Read complete after 0s [id=757007a7-d8d7-4207-9912-3e6462eb88a8]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.vsphere_namespace.restapi_object.namespace will be created
+  + resource "restapi_object" "namespace" {
+      + api_data                  = (known after apply)
+      + api_response              = (known after apply)
+      + create_method             = "POST"
+      + create_response           = (known after apply)
+      + data                      = jsonencode(
+            {
+              + cluster         = "domain-c9"
+              + description     = "Dev Namespace"
+              + namespace       = "dev-namespace"
+              + storage_specs   = [
+                  + {
+                      + limit  = 512000
+                      + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              + vm_service_spec = {
+                  + content_libraries = [
+                      + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  + vm_classes        = [
+                      + "best-effort-large",
+                      + "best-effort-medium",
+                      + "best-effort-small",
+                      + "best-effort-xlarge",
+                    ]
+                }
+            }
+        )
+      + destroy_method            = "DELETE"
+      + force_new                 = [
+          + "namespace",
+          + "cluster",
+        ]
+      + id                        = (known after apply)
+      + id_attribute              = "namespace"
+      + ignore_all_server_changes = false
+      + object_id                 = "dev-namespace"
+      + path                      = "/api/vcenter/namespaces/instances"
+      + read_method               = "GET"
+      + update_data               = jsonencode(
+            {
+              + description     = "Dev Namespace"
+              + storage_specs   = [
+                  + {
+                      + limit  = 512000
+                      + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+                    },
+                ]
+              + vm_service_spec = {
+                  + content_libraries = [
+                      + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+                    ]
+                  + vm_classes        = [
+                      + "best-effort-large",
+                      + "best-effort-medium",
+                      + "best-effort-small",
+                      + "best-effort-xlarge",
+                    ]
+                }
+            }
+        )
+      + update_method             = "PATCH"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + config_status  = (known after apply)
+  + create_spec    = {
+      + cluster         = "domain-c9"
+      + description     = "Dev Namespace"
+      + namespace       = "dev-namespace"
+      + storage_specs   = [
+          + {
+              + limit  = 512000
+              + policy = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+            },
+        ]
+      + vm_service_spec = {
+          + content_libraries = [
+              + "757007a7-d8d7-4207-9912-3e6462eb88a8",
+            ]
+          + vm_classes        = [
+              + "best-effort-large",
+              + "best-effort-medium",
+              + "best-effort-small",
+              + "best-effort-xlarge",
+            ]
+        }
+    }
+  + namespace_name = (known after apply)
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: namespace.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "namespace.tfplan"
+
+
+% terraform apply namespace.tfplan
+ephemeral.restful_resource.vcenter_session: Opening...
+ephemeral.restful_resource.vcenter_session: Opening complete after 0s
+module.vsphere_namespace.restapi_object.namespace: Creating...
+module.vsphere_namespace.restapi_object.namespace: Creation complete after 0s [id=dev-namespace]
+ephemeral.restful_resource.vcenter_session: Closing...
+ephemeral.restful_resource.vcenter_session: Closing complete after 0s
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+config_status = "CONFIGURING"
+create_spec = {
+  "cluster" = "domain-c9"
+  "description" = "Dev Namespace"
+  "namespace" = "dev-namespace"
+  "storage_specs" = [
+    {
+      "limit" = 512000
+      "policy" = "aa6d5a82-1c88-45da-85d3-3d74b91a5bad"
+    },
+  ]
+  "vm_service_spec" = {
+    "content_libraries" = [
+      "757007a7-d8d7-4207-9912-3e6462eb88a8",
+    ]
+    "vm_classes" = tolist([
+      "best-effort-large",
+      "best-effort-medium",
+      "best-effort-small",
+      "best-effort-xlarge",
+    ])
+  }
+}
+namespace_name = "dev-namespace"
+
