@@ -24,7 +24,6 @@ This guide presents three Terraform projects for provisioning vSphere namespaces
 - [How the projects work together](#how-the-projects-work-together)
 - [Configuration and operational boundaries](#configuration-and-operational-boundaries)
 - [Documentation library](#documentation-library)
-- [Publish documentation assets](#publish-documentation-assets)
 
 ## Requirements: Supervisor connection
 
@@ -180,20 +179,6 @@ During removal, delete managed VKS clusters through their own states and verify 
 | [REST namespace project](Readme-create-vsphere-namespace-x.md) | REST payloads, storage limits, deployment, adoption, outputs, and lifecycle behavior. |
 | [VKS cluster project](Readme-create-vks-cluster.md) | Cluster prerequisites, deployment, readiness, upgrades, scaling, adoption, and deletion. |
 | [Namespace model comparison](Readme-compare-vsphere-namespace-models.md) | Feature differences, provider ownership, tradeoffs, and recorded validation evidence. |
-
-
-## Publish documentation assets
-
-Run `sudo ./run-upload-files-to-platformlab.sh` on the Platform Lab server from this repository. The script publishes generated documentation and copies supporting assets, preserving their directory structure:
-
-| Local source | Server staging directory | Public directory |
-| --- | --- | --- |
-| `platformlab-images/` | `/platformlab-images/` | `/imported-images/` |
-| `platformlab-docs/` | `/platformlab-docs/` | `/imported-html/` |
-
-The documentation copy preserves nested report paths, including `assets/output/` and Terraform transcripts. Shell scripts (`.sh`) are excluded from both documentation copy stages. Utility links in the READMEs point to GitHub. Regenerate the documentation before uploading to include those updated links.
-
-Generated HTML opens web URLs in the same browser tab outside the WordPress iframe. The adjacent external-link icon opens the URL in a new tab. Regenerate HTML with `bash run-md-to-docs.sh --no-pdf --no-docx` and upload the updated files to publish link-behavior changes.
 
 The uploader rewrites relative `diagrams/` links in staged HTML to their public image URLs. It uses `rsync` when available and `cp` otherwise, without deleting destination files. A missing source directory produces a warning and skips that source sync.
 
